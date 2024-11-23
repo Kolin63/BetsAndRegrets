@@ -7,13 +7,13 @@ radius = 600.0
 
 [node name="Plinko" type="Node2D"]
 
-[node name="Ball" type="Area2D" parent="."]
-position = Vector2(539, 202)
-scale = Vector2(0.05, 0.05)
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(469, 159)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Ball"]
-texture = ExtResource("1_staxj")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+scale = Vector2(0.11, 0.11)
 shape = SubResource("CircleShape2D_x5qog")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball/CollisionShape2D"]
+texture = ExtResource("1_staxj")
