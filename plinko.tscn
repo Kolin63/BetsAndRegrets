@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4xdllaop1loy"]
+
+[ext_resource type="Texture2D" uid="uid://uvsyw0muhoes" path="res://art/balldev.jpeg" id="1_staxj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5qog"]
+radius = 600.0
+
+[node name="Plinko" type="Node2D"]
+
+[node name="Ball" type="Area2D" parent="."]
+position = Vector2(539, 202)
+scale = Vector2(0.05, 0.05)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("1_staxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_x5qog")
