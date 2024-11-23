@@ -31,8 +31,8 @@ Every day, you can play Plinko once to try and get some money, just drop a ball 
 - I guess it's something (when he wins a day, has max souls, earnings are above 2x exclusive)
 - This game is rigged! (after he loses 3 times in a row, he has max souls)
 - %*$@! (When he loses and no other conditions are met)
- - I won! (after he wins and no other conditions are met) **
- - Finally! (after he wins and no other conditions are met) **
+ - I won! (after he wins and no other conditions are met)
+ - Finally! (after he wins and no other conditions are met)
 - How am I supposed to get **10 MILLION** DOLLARS? (When he loses and no other conditions are met)
 - C'mon lucky 7! (When you use 7 balls)
 - No... No. NOOOOO!!! (fades out as he becomes the devil's servant, game over screen)
@@ -44,16 +44,16 @@ Every day, you can play Plinko once to try and get some money, just drop a ball 
 - I've really got to start being more careful with this... (After he loses his second soul)
 - I miss my family... (After he loses a day after losing 2 souls)
 - It's okay, I can get it back (After he loses a day after losing 2 souls)
-- Oh! Oh yes! There is hope! (After he wins a day after losing 2 souls) **
-- D-do I have a chance? (After he wins a day after losing 2 souls) **
+- Oh! Oh yes! There is hope! (After he wins a day after losing 2 souls)
+- D-do I have a chance? (After he wins a day after losing 2 souls)
 - Devil: Hahahaha! You've only got one shot left, after this, you'll be mine forever. *snap* (After he loses his third soul)
 - *shakey voice* N-no... I've really got to be more careful. I need to get back to my family (after he loses his third soul)
-- I'm so sorry for being a liar, this is why I'm here... (when he loses a day after he lost 3 souls) **
-- Cheating at life landed me here... (when he loses a day after he lost 3 souls) **
+- I'm so sorry for being a liar, this is why I'm here... (when he loses a day after he lost 3 souls)
+- Cheating at life landed me here... (when he loses a day after he lost 3 souls)
 - *gasp* YES, YES! I HAVE A CHANCE (when he wins a day after losing 3 souls)
-- I'm so close! (when he wins and is above 9M) **
-- I was so close! (when he loses and goes below 9M) **
-- Devil: Grr... You've won.. I'm a man of my word, you are free... (when you win the game) **
-- Yes, YES! I'm free. I'm so sorry for lying and cheating, I'll live life as a better man! I will no longer be my own worst enemy! (After he is let free) **
-- Narrator: After the man was let free, he lived life to the best of his ability. He became a loving husband and a caring father. He volunteered at his local soup kitchen, and was a good person overall. He had stopped lying and cheating his way through life. He was no longer, his own worst enemy. (After he wins) **
-- Narrator: After the man was prisoned, his body laid lifeless. He hadn't learned his lesson about being his own worst enemy. He served the devil for the rest of eternity. (After he wins) **
+- I'm so close! (when he wins and is above 9M)
+- I was so close! (when he loses and goes below 9M)
+- Devil: Grr... You've won.. I'm a man of my word, you are free... (when you win the game)
+- Yes, YES! I'm free. I'm so sorry for lying and cheating, I'll live life as a better man! I will no longer be my own worst enemy! (After he is let free)
+- Narrator: After the man was let free, he lived life to the best of his ability. He became a loving husband and a caring father. He volunteered at his local soup kitchen, and was a good person overall. He had stopped lying and cheating his way through life. He was no longer, his own worst enemy. (After he wins)
+- Narrator: After the man was imprisoned, his body laid lifeless. He hadn't learned his lesson about being his own worst enemy. He served the devil for the rest of eternity. (After he loses)
