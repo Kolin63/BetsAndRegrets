@@ -46,6 +46,7 @@ texture = ExtResource("2_6eh4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
 shape = SubResource("CircleShape2D_0b2yx")
+=======
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.06, 0.06)
 shape = SubResource("CircleShape2D_0b2yx")
