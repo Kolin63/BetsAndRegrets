@@ -69,22 +69,25 @@ func get_peg_position_x(pegs_in_row, peg_index, peg_size, peg_padding, middle):
 # Generate the pegs
 func generate(base_pegs):
 	var viewport_size = get_viewport().get_visible_rect().size
-	const bottom_padding = 80
+	const bottom_padding = 60
 	const side_padding = 20
 	
-	const peg_size = 10.0
+	const peg_size = 18
 	const peg_padding = peg_size
 	
 	var total_pegs = get_total_pegs(base_pegs)
 	var rows = get_rows(base_pegs)
 	var middle = get_middle_of_viewport_x(viewport_size.x, peg_size)
 	
-	for i in range(1, rows + 1):
+	for i in range(1, rows):
 		var pegs_in_row = base_pegs - i + 1
 		
 		for j in range(1, pegs_in_row):
 			var peg = Peg.duplicate()
-			peg.scale = peg_size 
 			peg.position.x = (get_peg_position_x(pegs_in_row, j, peg_size, peg_padding, middle))
 			peg.position.y = (viewport_size.y - bottom_padding) - ((peg_size + peg_padding) * i)
 			add_child(peg)
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	pass # Replace with function body.
