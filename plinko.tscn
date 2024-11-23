@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4xdllaop1loy"]
+[gd_scene load_steps=15 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Texture2D" uid="uid://uvsyw0muhoes" path="res://art/balldev.jpeg" id="1_staxj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
 [ext_resource type="Texture2D" uid="uid://dgyykab7gfjx8" path="res://art/bucketdev.jpg" id="5_rxug7"]
 [ext_resource type="Script" path="res://bucket.gd" id="5_uq8cn"]
+[ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="7_0267x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -31,6 +32,7 @@ absorbent = true
 script = ExtResource("1_hghkl")
 
 [node name="Ball" type="RigidBody2D" parent="."]
+editor_description = "ball"
 position = Vector2(-157, -147)
 mass = 0.077
 physics_material_override = SubResource("PhysicsMaterial_jwu4b")
@@ -71,7 +73,8 @@ script = ExtResource("5_uq8cn")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bucket"]
-scale = Vector2(0.05, 0.05)
+position = Vector2(-4.76837e-07, -2)
+scale = Vector2(0.03, 0.026)
 texture = ExtResource("5_rxug7")
 
 [node name="Label" type="Label" parent="Bucket/Sprite2D"]
@@ -88,12 +91,13 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 100
-theme_override_font_sizes/font_size = 200
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 300
 text = "x5"
 horizontal_alignment = 1
 
 [node name="Border" type="CollisionPolygon2D" parent="Bucket"]
-polygon = PackedVector2Array(13, 11, -8, 11, -13, 11, -13, -11, -8, -11, -8, 5, 8, 5, 8, -11, 13, -11)
+polygon = PackedVector2Array(18, 11, -8, 11, -18, 11, -18, -15, -8, -11, -8, 5, 8, 5, 8, -11, 18, -15)
 
 [node name="Detection" type="Area2D" parent="Bucket"]
 
@@ -114,16 +118,18 @@ offset_bottom = 23.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 75
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 150
 text = "$5.32"
 
 [node name="BallsCount" type="Label" parent="."]
-offset_left = 9.0
-offset_top = 97.0
-offset_right = 64.0
-offset_bottom = 120.0
+offset_left = 8.0
+offset_top = 116.0
+offset_right = 229.0
+offset_bottom = 176.0
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 60
 text = "Balls: 1"
 
 [node name="DayCount" type="Label" parent="."]
@@ -136,9 +142,15 @@ offset_right = 1128.0
 offset_bottom = 113.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 75
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 150
 text = "Day 1"
 horizontal_alignment = 2
+
+[node name="BallPreview" type="Sprite2D" parent="."]
+modulate = Color(0.521141, 0.521141, 0.521141, 1)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_staxj")
 
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]
