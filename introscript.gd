@@ -1,8 +1,14 @@
 extends Control
 
-func show_textforhell():
-	$Dialouge.visible = true
+
+func say(name, text):
+	show_dialouge()
+	
 	
 
-func hide_textforhell():
+
+func show_dialouge():
+	$Dialouge.visible = true
+
+func hide_dialouge():
 	$Dialouge.visible = false

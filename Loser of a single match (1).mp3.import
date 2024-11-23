@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ca7g3g7ntft3d"
+path="res://.godot/imported/Loser of a single match (1).mp3-562c6b5a18c16901f9d459d61ef2413e.mp3str"
+
+[deps]
+
+source_file="res://Loser of a single match (1).mp3"
+dest_files=["res://.godot/imported/Loser of a single match (1).mp3-562c6b5a18c16901f9d459d61ef2413e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
