@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4xdllaop1loy"]
+[gd_scene load_steps=16 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://bucket.gd" id="5_uq8cn"]
 [ext_resource type="Texture2D" uid="uid://b55accqbfi5a3" path="res://HACKBUCKET.png" id="6_3dtiq"]
 [ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="7_0267x"]
+[ext_resource type="Texture2D" uid="uid://gbow77wfi4gu" path="res://Background.png" id="8_n4je3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -158,6 +159,12 @@ position = Vector2(-157, -119)
 scale = Vector2(0.13, 0.13)
 texture = ExtResource("2_dre8r")
 offset = Vector2(300, 130)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(564, 325)
+scale = Vector2(0.31713, 0.31713)
+texture = ExtResource("8_n4je3")
 
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]
