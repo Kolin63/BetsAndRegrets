@@ -45,19 +45,26 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Peg"]
 texture = ExtResource("2_6eh4s")
 
-<<<<<<< Updated upstream
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
-=======
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.06, 0.06)
->>>>>>> Stashed changes
+
 shape = SubResource("CircleShape2D_0b2yx")
 
-<<<<<<< Updated upstream
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.06, 0.06)
+shape = SubResource("CircleShape2D_0b2yx")
+
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("5_yr7ut")
-=======
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(7900, 6333.33)
 texture = ExtResource("2_6eh4s")
->>>>>>> Stashed changes
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("5_yr7ut")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(7900, 6333.33)
+texture = ExtResource("2_6eh4s")
