@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4xdllaop1loy"]
+[gd_scene load_steps=9 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Texture2D" uid="uid://uvsyw0muhoes" path="res://art/balldev.jpeg" id="1_staxj"]
 [ext_resource type="Texture2D" uid="uid://rg4mdmrp114w" path="res://art/pegdev.jpeg" id="2_6eh4s"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
-[ext_resource type="Texture2D" uid="uid://bcy27l2qfk7pe" path="res://testbackground1.png" id="5_yr7ut"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -12,30 +11,29 @@
 radius = 600.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jjg6k"]
-bounce = 1.0
+bounce = 0.7
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0b2yx"]
-radius = 636.74
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bnxy"]
 
 [node name="Plinko" type="Node2D"]
 script = ExtResource("1_hghkl")
 
 [node name="Ball" type="RigidBody2D" parent="."]
-position = Vector2(539, 67)
+position = Vector2(563, 66)
 mass = 0.077
 physics_material_override = SubResource("PhysicsMaterial_jwu4b")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_staxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.013, 0.013)
 shape = SubResource("CircleShape2D_x5qog")
 
 [node name="Peg" type="RigidBody2D" parent="."]
-position = Vector2(-1864, -1214)
+position = Vector2(-234, -207)
 physics_material_override = SubResource("PhysicsMaterial_jjg6k")
 gravity_scale = 0.0
 freeze = true
@@ -43,28 +41,9 @@ script = ExtResource("2_73qfo")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Peg"]
+scale = Vector2(0.005, 0.005)
 texture = ExtResource("2_6eh4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.06, 0.06)
-
-shape = SubResource("CircleShape2D_0b2yx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.06, 0.06)
-shape = SubResource("CircleShape2D_0b2yx")
-
-[node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("5_yr7ut")
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(7900, 6333.33)
-texture = ExtResource("2_6eh4s")
-
-[node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("5_yr7ut")
-
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(7900, 6333.33)
-texture = ExtResource("2_6eh4s")
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_2bnxy")
