@@ -20,5 +20,5 @@ func _process(delta: float) -> void:
 
 
 func _on_detection_body_entered(body: Node2D) -> void:
-	if (body == Plinko.Ball):
+	if (body.editor_description == "ball"):
 		Plinko.set_money(round(Plinko.get_money() * multiplier * 100) / 100)
