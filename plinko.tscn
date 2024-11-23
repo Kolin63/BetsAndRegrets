@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://rg4mdmrp114w" path="res://art/pegdev.jpeg" id="2_6eh4s"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
 [ext_resource type="Texture2D" uid="uid://dvmg3d63bwrrs" path="res://HACKBALL.png" id="2_dre8r"]
-[ext_resource type="Texture2D" uid="uid://dgyykab7gfjx8" path="res://art/bucketdev.jpg" id="5_rxug7"]
 [ext_resource type="Script" path="res://bucket.gd" id="5_uq8cn"]
+[ext_resource type="Texture2D" uid="uid://b55accqbfi5a3" path="res://HACKBUCKET.png" id="6_3dtiq"]
 [ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="7_0267x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
@@ -75,8 +75,9 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bucket"]
 position = Vector2(-4.76837e-07, -2)
-scale = Vector2(0.03, 0.026)
-texture = ExtResource("5_rxug7")
+scale = Vector2(0.17, 0.116)
+texture = ExtResource("6_3dtiq")
+offset = Vector2(85.88, -76.89)
 
 [node name="Label" type="Label" parent="Bucket/Sprite2D"]
 anchors_preset = 15
