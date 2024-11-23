@@ -17,6 +17,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if (balls > 0):
+		$BallPreview.visible = true
+		$BallPreview.position.x = get_viewport().get_mouse_position().x
+		$BallPreview.position.y = 25
+	else:
+		$BallPreview.visible = false
+	if (Input.is_action_just_pressed("click")):
+		var ball = Ball.duplicate()
+		ball.position.x = get_viewport().get_mouse_position().x
+		ball.position.y = 25
+		ball.gravity_scale = 1
+		set_balls(balls - 1)
+		add_child(ball)
+
 	# Spawn Ball
 	if (Input.is_action_pressed("click") && balls > 0):
 		var ball = Ball.duplicate()
@@ -137,4 +151,5 @@ func generate(base_pegs):
 				bucket.position.y += peg_padding * 3
 				add_child(bucket)
 				var dist_from_center = abs(pegs_in_row / 2 - j)
+				bucket.set_multiplier(0.25 * dist_from_center * dist_from_center / 2)
 				bucket.set_multiplier((0.25 * dist_from_center * dist_from_center) / 2)
