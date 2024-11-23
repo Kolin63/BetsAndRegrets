@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4xdllaop1loy"]
+[gd_scene load_steps=10 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Texture2D" uid="uid://uvsyw0muhoes" path="res://art/balldev.jpeg" id="1_staxj"]
 [ext_resource type="Texture2D" uid="uid://rg4mdmrp114w" path="res://art/pegdev.jpeg" id="2_6eh4s"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
+[ext_resource type="Texture2D" uid="uid://bcy27l2qfk7pe" path="res://testbackground1.png" id="5_yr7ut"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -45,14 +46,25 @@ metadata/_edit_group_ = true
 texture = ExtResource("2_6eh4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.06, 0.06)
+
 shape = SubResource("CircleShape2D_0b2yx")
-=======
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.06, 0.06)
 shape = SubResource("CircleShape2D_0b2yx")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("5_yr7ut")
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(7900, 6333.33)
+texture = ExtResource("2_6eh4s")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("5_yr7ut")
+
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(7900, 6333.33)
 texture = ExtResource("2_6eh4s")
