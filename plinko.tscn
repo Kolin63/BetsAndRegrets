@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4xdllaop1loy"]
+[gd_scene load_steps=11 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Texture2D" uid="uid://uvsyw0muhoes" path="res://art/balldev.jpeg" id="1_staxj"]
 [ext_resource type="Texture2D" uid="uid://rg4mdmrp114w" path="res://art/pegdev.jpeg" id="2_6eh4s"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
+[ext_resource type="Texture2D" uid="uid://dgyykab7gfjx8" path="res://art/bucketdev.jpg" id="5_rxug7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -14,6 +15,10 @@ radius = 600.0
 bounce = 0.7
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2bnxy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_00t77"]
+bounce = 1.0
+absorbent = true
 
 [node name="Plinko" type="Node2D"]
 script = ExtResource("1_hghkl")
@@ -47,3 +52,44 @@ texture = ExtResource("2_6eh4s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_2bnxy")
+
+[node name="Bucket" type="RigidBody2D" parent="."]
+z_index = -1
+position = Vector2(-227, -117)
+physics_material_override = SubResource("PhysicsMaterial_00t77")
+gravity_scale = 0.0
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bucket"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_rxug7")
+
+[node name="Label" type="Label" parent="Bucket/Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -977.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 100
+theme_override_font_sizes/font_size = 500
+text = "x5"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket"]
+polygon = PackedVector2Array(11, 11, -11, 11, -11, 11, -11, -11, -8, -11, -8, 5, 8, 5, 8, -11, 11, -11)
+
+[node name="Money" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 75
+text = "$5.32"
+
+[node name="Node" type="Node" parent="."]
