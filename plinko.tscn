@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4xdllaop1loy"]
+[gd_scene load_steps=5 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Texture2D" uid="uid://uvsyw0muhoes" path="res://art/balldev.jpeg" id="1_staxj"]
+[ext_resource type="Texture2D" uid="uid://rg4mdmrp114w" path="res://art/pegdev.jpeg" id="2_6eh4s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5qog"]
 radius = 600.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0b2yx"]
+radius = 349.64
 
 [node name="Plinko" type="Node2D"]
 
@@ -17,3 +21,15 @@ shape = SubResource("CircleShape2D_x5qog")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball/CollisionShape2D"]
 texture = ExtResource("1_staxj")
+
+[node name="Peg" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
+scale = Vector2(0.06, 0.06)
+shape = SubResource("CircleShape2D_0b2yx")
+one_way_collision_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Peg/CollisionShape2D"]
+position = Vector2(7900, 6333.33)
+texture = ExtResource("2_6eh4s")
