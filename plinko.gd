@@ -1,5 +1,6 @@
 extends Node2D
 @onready var Peg = $Peg
+@onready var Bucket = $Bucket
 
 
 # Called when the node enters the scene tree for the first time.
@@ -87,6 +88,12 @@ func generate(base_pegs):
 			peg.position.x = (get_peg_position_x(pegs_in_row, j, peg_size, peg_padding, middle))
 			peg.position.y = (viewport_size.y - bottom_padding) - ((peg_size + peg_padding) * i)
 			add_child(peg)
+			if (i == 1):
+				var bucket = Bucket.duplicate()
+				bucket.position = peg.position
+				bucket.position.x += peg_padding
+				bucket.position.y += peg_padding * 3
+				add_child(bucket)
 
 
 func _on_h_slider_value_changed(value: float) -> void:
