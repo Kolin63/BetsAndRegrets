@@ -1,16 +1,37 @@
 extends Node2D
 @onready var Peg = $Peg
 @onready var Bucket = $Bucket
+@onready var Ball = $Ball
+
+var money
+var balls
+var day
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	money = 5.32
+	balls = 1
 	generate(18)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func new_day():
+	day += 1
+	balls = day
+
+
+func get_money():
+	return money
+
+
+func set_money(x):
+	money = x
+	$Money.text = "$" + str(money)
 
 
 # Calculates total amount of pegs
@@ -94,7 +115,5 @@ func generate(base_pegs):
 				bucket.position.x += peg_padding
 				bucket.position.y += peg_padding * 3
 				add_child(bucket)
-
-
-func _on_h_slider_value_changed(value: float) -> void:
-	pass # Replace with function body.
+				var dist_from_center = abs(pegs_in_row / 2 - j)
+				bucket.set_multiplier(0.25 * dist_from_center * dist_from_center)

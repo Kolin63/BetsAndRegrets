@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4xdllaop1loy"]
+[gd_scene load_steps=14 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Texture2D" uid="uid://uvsyw0muhoes" path="res://art/balldev.jpeg" id="1_staxj"]
 [ext_resource type="Texture2D" uid="uid://rg4mdmrp114w" path="res://art/pegdev.jpeg" id="2_6eh4s"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
 [ext_resource type="Texture2D" uid="uid://dgyykab7gfjx8" path="res://art/bucketdev.jpg" id="5_rxug7"]
+[ext_resource type="Script" path="res://bucket.gd" id="5_uq8cn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -17,6 +18,12 @@ bounce = 0.7
 [sub_resource type="CircleShape2D" id="CircleShape2D_2bnxy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_00t77"]
+bounce = 0.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jaakm"]
+size = Vector2(16, 12)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7wb4y"]
 bounce = 1.0
 absorbent = true
 
@@ -24,9 +31,10 @@ absorbent = true
 script = ExtResource("1_hghkl")
 
 [node name="Ball" type="RigidBody2D" parent="."]
-position = Vector2(563, 66)
+position = Vector2(-157, -147)
 mass = 0.077
 physics_material_override = SubResource("PhysicsMaterial_jwu4b")
+gravity_scale = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
@@ -55,10 +63,11 @@ shape = SubResource("CircleShape2D_2bnxy")
 
 [node name="Bucket" type="RigidBody2D" parent="."]
 z_index = -1
-position = Vector2(-227, -117)
+position = Vector2(-224, -123)
 physics_material_override = SubResource("PhysicsMaterial_00t77")
 gravity_scale = 0.0
 freeze = true
+script = ExtResource("5_uq8cn")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bucket"]
@@ -69,19 +78,35 @@ texture = ExtResource("5_rxug7")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -960.0
-offset_bottom = -977.0
+offset_left = -340.0
+offset_top = -140.0
+offset_right = -660.0
+offset_bottom = -647.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 100
-theme_override_font_sizes/font_size = 500
+theme_override_font_sizes/font_size = 200
 text = "x5"
+horizontal_alignment = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket"]
-polygon = PackedVector2Array(11, 11, -11, 11, -11, 11, -11, -11, -8, -11, -8, 5, 8, 5, 8, -11, 11, -11)
+[node name="Border" type="CollisionPolygon2D" parent="Bucket"]
+polygon = PackedVector2Array(13, 11, -8, 11, -13, 11, -13, -11, -8, -11, -8, 5, 8, 5, 8, -11, 13, -11)
+
+[node name="Detection" type="Area2D" parent="Bucket"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket/Detection"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_jaakm")
+
+[node name="Absorb" type="RigidBody2D" parent="Bucket"]
+physics_material_override = SubResource("PhysicsMaterial_7wb4y")
+gravity_scale = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket/Absorb"]
+polygon = PackedVector2Array(-8, -10, -8, 5, 8, 5, 8, -10, 9, -10, 9, 6, -9, 6, -9, -10)
 
 [node name="Money" type="Label" parent="."]
 offset_right = 40.0
@@ -92,4 +117,28 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 75
 text = "$5.32"
 
-[node name="Node" type="Node" parent="."]
+[node name="BallsCount" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 97.0
+offset_right = 64.0
+offset_bottom = 120.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Balls: 1"
+
+[node name="DayCount" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 865.0
+offset_top = 10.0
+offset_right = 1128.0
+offset_bottom = 113.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 75
+text = "Day 1"
+horizontal_alignment = 2
+
+[connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]
