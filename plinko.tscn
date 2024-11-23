@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=15 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
@@ -7,6 +8,18 @@
 [ext_resource type="Script" path="res://bucket.gd" id="5_uq8cn"]
 [ext_resource type="Texture2D" path="res://HACKBUCKET.png" id="6_n5c2k"]
 [ext_resource type="FontFile" path="res://3XAY-Sans-Regular.ttf" id="7_ttqkl"]
+
+[gd_scene load_steps=16 format=3 uid="uid://b4xdllaop1loy"]
+
+[ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
+[ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
+[ext_resource type="Texture2D" uid="uid://dvmg3d63bwrrs" path="res://HACKBALL.png" id="2_dre8r"]
+[ext_resource type="Texture2D" uid="uid://ddbbho8f37w81" path="res://HACKPIN.png" id="4_obq3l"]
+[ext_resource type="Script" path="res://bucket.gd" id="5_uq8cn"]
+[ext_resource type="Texture2D" uid="uid://b55accqbfi5a3" path="res://HACKBUCKET.png" id="6_3dtiq"]
+[ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="7_0267x"]
+[ext_resource type="Texture2D" uid="uid://gbow77wfi4gu" path="res://Background.png" id="8_n4je3"]
+
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -33,16 +46,26 @@ script = ExtResource("1_hghkl")
 
 [node name="Ball" type="RigidBody2D" parent="."]
 editor_description = "ball"
+
 position = Vector2(-130, -135)
+
+position = Vector2(-157, -147)
+
 mass = 0.077
 physics_material_override = SubResource("PhysicsMaterial_jwu4b")
 gravity_scale = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
+
 position = Vector2(33.2, 14.8)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_ong4x")
+
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_dre8r")
+offset = Vector2(300, 130)
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 position = Vector2(0.200012, -0.199997)
@@ -58,8 +81,9 @@ script = ExtResource("2_73qfo")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Peg"]
-scale = Vector2(0.005, 0.005)
-texture = ExtResource("2_6eh4s")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_obq3l")
+offset = Vector2(-160, 60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
 scale = Vector2(0.5, 0.5)
@@ -75,27 +99,46 @@ script = ExtResource("5_uq8cn")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bucket"]
+
 position = Vector2(15.53, -9.2)
 scale = Vector2(0.18, 0.11)
 texture = ExtResource("6_n5c2k")
+
+position = Vector2(-4.76837e-07, -2)
+scale = Vector2(0.17, 0.116)
+texture = ExtResource("6_3dtiq")
+offset = Vector2(85.88, -76.89)
+
 
 [node name="Label" type="Label" parent="Bucket/Sprite2D"]
 z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+
 offset_left = -170.0
 offset_top = -44.0
 offset_right = -3832.0
 offset_bottom = -1976.0
+
+offset_left = -100.0
+offset_top = -69.0
+offset_right = -3734.0
+offset_bottom = -2072.0
+
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
+
 theme_override_fonts/font = ExtResource("7_ttqkl")
 theme_override_font_sizes/font_size = 150
+
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 160
+
 text = "x5.25"
 horizontal_alignment = 1
 autowrap_mode = 1
@@ -122,6 +165,7 @@ offset_bottom = 100.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
+
 theme_override_fonts/font = ExtResource("7_ttqkl")
 theme_override_font_sizes/font_size = 140
 text = "$5.32"
@@ -133,6 +177,19 @@ offset_right = 116.0
 offset_bottom = 136.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("7_ttqkl")
+
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 150
+text = "$5.32"
+
+[node name="BallsCount" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 116.0
+offset_right = 229.0
+offset_bottom = 176.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_0267x")
+
 theme_override_font_sizes/font_size = 60
 text = "Balls: 1"
 
@@ -146,16 +203,35 @@ offset_right = 1128.0
 offset_bottom = 113.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 8
+
 theme_override_fonts/font = ExtResource("7_ttqkl")
+
+theme_override_fonts/font = ExtResource("7_0267x")
+
 theme_override_font_sizes/font_size = 150
 text = "Day 1"
 horizontal_alignment = 2
 
 [node name="BallPreview" type="Sprite2D" parent="."]
+
 position = Vector2(-132, -171)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_ong4x")
 offset = Vector2(300, 130)
+
+
+modulate = Color(0.521141, 0.521141, 0.521141, 1)
+position = Vector2(-157, -119)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_dre8r")
+offset = Vector2(300, 130)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(564, 325)
+scale = Vector2(0.31713, 0.31713)
+texture = ExtResource("8_n4je3")
+
 
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]

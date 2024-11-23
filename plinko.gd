@@ -31,6 +31,24 @@ func _process(delta: float) -> void:
 		set_balls(balls - 1)
 		add_child(ball)
 
+	# Spawn Ball
+	if (Input.is_action_pressed("click") && balls > 0):
+		var ball = Ball.duplicate()
+		ball.position = get_viewport().get_mouse_position()
+		ball.position.y = 25
+		ball.gravity_scale = 1
+		add_child(ball)
+		set_balls(balls - 1)
+
+
+	# Ball Preview
+	if (balls > 0):
+		$BallPreview.visible = true
+		$BallPreview.position = get_viewport().get_mouse_position()
+		$BallPreview.position.y = 25
+	else:
+		$BallPreview.visible = false
+
 
 func new_day():
 	day += 1
@@ -108,7 +126,7 @@ func get_peg_position_x(pegs_in_row, peg_index, peg_size, peg_padding, middle):
 # Generate the pegs
 func generate(base_pegs):
 	var viewport_size = get_viewport().get_visible_rect().size
-	const bottom_padding = 60
+	const bottom_padding = 40
 	const side_padding = 20
 	
 	const peg_size = 18
@@ -134,3 +152,4 @@ func generate(base_pegs):
 				add_child(bucket)
 				var dist_from_center = abs(pegs_in_row / 2 - j)
 				bucket.set_multiplier(0.25 * dist_from_center * dist_from_center / 2)
+				bucket.set_multiplier((0.25 * dist_from_center * dist_from_center) / 2)
