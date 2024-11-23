@@ -1,4 +1,5 @@
 [gd_scene load_steps=16 format=3 uid="uid://b4xdllaop1loy"]
+[gd_scene load_steps=32 format=3 uid="uid://b4xdllaop1loy"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -8,6 +9,19 @@
 [ext_resource type="Texture2D" uid="uid://b55accqbfi5a3" path="res://HACKBUCKET.png" id="6_3dtiq"]
 [ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="7_0267x"]
 [ext_resource type="Texture2D" uid="uid://gbow77wfi4gu" path="res://Background.png" id="8_n4je3"]
+[ext_resource type="Texture2D" uid="uid://64i8xwmvx378" path="res://icon.svg" id="9_rs4o2"]
+[ext_resource type="Texture2D" uid="uid://cyjuxg36tkphq" path="res://HAAC_Art/PNGHACKDead1.png" id="10_rhojj"]
+[ext_resource type="Texture2D" uid="uid://7t7uyrusept3" path="res://HAAC_Art/PNGHACKHappy1.png" id="11_4j5s1"]
+[ext_resource type="Texture2D" uid="uid://bjd3s820q2d5q" path="res://HAAC_Art/PNGHACKMiserable1.png" id="12_3gi07"]
+[ext_resource type="Texture2D" uid="uid://bb4ql0ythhcq7" path="res://HAAC_Art/PNGHACKQuestion1.png" id="13_kh1bo"]
+[ext_resource type="Texture2D" uid="uid://bjk3tmbq81wvq" path="res://HAAC_Art/PNGHACKSad1.png" id="14_ve7fl"]
+[ext_resource type="Texture2D" uid="uid://sssv2k7f75po" path="res://HAAC_Art/PNGHACKTalkingClosed1.png" id="15_ss7aq"]
+[ext_resource type="Texture2D" uid="uid://btsb05g0ym8m1" path="res://HAAC_Art/PNGHACKTalkingOpen1.png" id="16_s1qyp"]
+[ext_resource type="Texture2D" uid="uid://b46mokl42m4cv" path="res://HAAC_Art/PNGHACKThink1.png" id="17_ioitm"]
+[ext_resource type="Texture2D" uid="uid://d2q23uo3vl2lr" path="res://HACKSOUL1.png" id="18_mf4hd"]
+[ext_resource type="Texture2D" uid="uid://jf6turmn3icr" path="res://HACKSOUL2.png" id="19_12e5j"]
+[ext_resource type="Texture2D" uid="uid://ds7yasr5flsqu" path="res://HACKSOUL3.png" id="20_atuhl"]
+[ext_resource type="Texture2D" uid="uid://bf1e4jo52mg5k" path="res://HACKSOUL4.png" id="21_acq66"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -28,6 +42,101 @@ size = Vector2(16, 12)
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7wb4y"]
 bounce = 1.0
 absorbent = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vdteo"]
+bounce = 100000.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tu6s8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rhojj")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"devil_normal",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"devil_talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_4j5s1")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3gi07")
+}],
+"loop": true,
+"name": &"miserable",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_kh1bo")
+}],
+"loop": true,
+"name": &"question",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ve7fl")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ss7aq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_s1qyp")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_ioitm")
+}],
+"loop": true,
+"name": &"think",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4x5xq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_mf4hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_12e5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_atuhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_acq66")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
 
 [node name="Plinko" type="Node2D"]
 script = ExtResource("1_hghkl")
@@ -165,6 +274,38 @@ z_index = -2
 position = Vector2(564, 325)
 scale = Vector2(0.31713, 0.31713)
 texture = ExtResource("8_n4je3")
+
+[node name="NextDay" type="TextureButton" parent="."]
+offset_left = 872.0
+offset_top = 379.0
+offset_right = 1128.0
+offset_bottom = 507.0
+texture_normal = ExtResource("9_rs4o2")
+
+[node name="Label" type="Label" parent="NextDay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Next Day"
+
+[node name="Man" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_vdteo")
+gravity_scale = 0.0
+freeze = true
+
+[node name="Man" type="AnimatedSprite2D" parent="Man"]
+position = Vector2(106, 548)
+scale = Vector2(0.223264, 0.223264)
+sprite_frames = SubResource("SpriteFrames_tu6s8")
+animation = &"dead"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Man"]
+polygon = PackedVector2Array(15, 621, 16, 621, 221, 624, 205, 576, 155, 523, 119, 512, 85, 518, 38, 559, 17, 592)
+
+[node name="Soul" type="AnimatedSprite2D" parent="."]
+position = Vector2(967, 220)
+scale = Vector2(0.136312, 0.13316)
+sprite_frames = SubResource("SpriteFrames_4x5xq")
 
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]

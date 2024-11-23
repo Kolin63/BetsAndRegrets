@@ -6,12 +6,15 @@ extends Node2D
 var money
 var balls
 var day
+var soul
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	money = 5.32
 	balls = 1
+	set_soul(4)
+	set_balls(day)
 	generate(18)
 
 
@@ -53,6 +56,11 @@ func set_money(x):
 func set_balls(x):
 	balls = x
 	$BallsCount.text = "Balls: " + str(balls)
+
+
+func set_soul(x):
+	soul = x
+	$Soul.frame = soul - 1
 
 
 # Calculates total amount of pegs
