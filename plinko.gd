@@ -21,12 +21,12 @@ func _process(delta: float) -> void:
 	if (Input.is_action_pressed("click") && balls > 0):
 		var ball = Ball.duplicate()
 		ball.position = get_viewport().get_mouse_position()
-		#ball.position.y = 25
+		ball.position.y = 25
 		ball.gravity_scale = 1
 		add_child(ball)
 		set_balls(balls - 1)
-		print(get_viewport().get_mouse_position())
-	
+
+
 	# Ball Preview
 	if (balls > 0):
 		$BallPreview.visible = true
