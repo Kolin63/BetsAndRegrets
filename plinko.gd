@@ -4,16 +4,15 @@ extends Node2D
 @onready var Ball = $Ball
 
 var money
-var balls
-var day
-var soul
+var balls 
+var day = 1
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	money = 5.32
 	balls = 1
-	set_soul(4)
+	#set_soul(4)
 	set_balls(day)
 	generate(18)
 
@@ -28,8 +27,8 @@ func _process(delta: float) -> void:
 		ball.gravity_scale = 1
 		add_child(ball)
 		set_balls(balls - 1)
-
-
+	
+	
 	# Ball Preview
 	if (balls > 0):
 		$BallPreview.visible = true
@@ -56,11 +55,6 @@ func set_money(x):
 func set_balls(x):
 	balls = x
 	$BallsCount.text = "Balls: " + str(balls)
-
-
-func set_soul(x):
-	soul = x
-	$Soul.frame = soul - 1
 
 
 # Calculates total amount of pegs

@@ -1,0 +1,170 @@
+[gd_scene load_steps=16 format=3 uid="uid://du31jy3465by3"]
+
+[ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
+[ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
+[ext_resource type="Texture2D" uid="uid://dvmg3d63bwrrs" path="res://HACKBALL.png" id="2_dre8r"]
+[ext_resource type="Texture2D" uid="uid://ddbbho8f37w81" path="res://HACKPIN.png" id="4_obq3l"]
+[ext_resource type="Script" path="res://bucket.gd" id="5_uq8cn"]
+[ext_resource type="Texture2D" uid="uid://b55accqbfi5a3" path="res://HACKBUCKET.png" id="6_3dtiq"]
+[ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="7_0267x"]
+[ext_resource type="Texture2D" uid="uid://gbow77wfi4gu" path="res://Background.png" id="8_n4je3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5qog"]
+radius = 600.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jjg6k"]
+bounce = 0.7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bnxy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_00t77"]
+bounce = 0.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jaakm"]
+size = Vector2(16, 12)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7wb4y"]
+bounce = 1.0
+absorbent = true
+
+[node name="Plinko" type="Node2D"]
+script = ExtResource("1_hghkl")
+
+[node name="Ball" type="RigidBody2D" parent="."]
+editor_description = "ball"
+position = Vector2(-157, -147)
+mass = 0.077
+physics_material_override = SubResource("PhysicsMaterial_jwu4b")
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_dre8r")
+offset = Vector2(300, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+scale = Vector2(0.013, 0.013)
+shape = SubResource("CircleShape2D_x5qog")
+
+[node name="Peg" type="RigidBody2D" parent="."]
+position = Vector2(-234, -207)
+physics_material_override = SubResource("PhysicsMaterial_jjg6k")
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("2_73qfo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Peg"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_obq3l")
+offset = Vector2(-160, 60)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_2bnxy")
+
+[node name="Bucket" type="RigidBody2D" parent="."]
+z_index = 2
+position = Vector2(-224, -123)
+physics_material_override = SubResource("PhysicsMaterial_00t77")
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("5_uq8cn")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bucket"]
+position = Vector2(-4.76837e-07, -2)
+scale = Vector2(0.17, 0.116)
+texture = ExtResource("6_3dtiq")
+offset = Vector2(85.88, -76.89)
+
+[node name="Label" type="Label" parent="Bucket/Sprite2D"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -69.0
+offset_right = -3734.0
+offset_bottom = -2072.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 160
+text = "x5.25"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Border" type="CollisionPolygon2D" parent="Bucket"]
+polygon = PackedVector2Array(18, 11, -8, 11, -18, 11, -18, -15, -8, -11, -8, 5, 8, 5, 8, -11, 18, -15)
+
+[node name="Detection" type="Area2D" parent="Bucket"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket/Detection"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_jaakm")
+
+[node name="Absorb" type="RigidBody2D" parent="Bucket"]
+physics_material_override = SubResource("PhysicsMaterial_7wb4y")
+gravity_scale = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket/Absorb"]
+polygon = PackedVector2Array(-8, -10, -8, 5, 8, 5, 8, -10, 9, -10, 9, 6, -9, 6, -9, -10)
+
+[node name="Money" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 150
+text = "$5.32"
+
+[node name="BallsCount" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 116.0
+offset_right = 229.0
+offset_bottom = 176.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 60
+text = "Balls: 1"
+
+[node name="DayCount" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 865.0
+offset_top = 10.0
+offset_right = 1128.0
+offset_bottom = 113.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 150
+text = "Day 1"
+horizontal_alignment = 2
+
+[node name="BallPreview" type="Sprite2D" parent="."]
+modulate = Color(0.521141, 0.521141, 0.521141, 1)
+position = Vector2(-157, -119)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_dre8r")
+offset = Vector2(300, 130)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(564, 325)
+scale = Vector2(0.31713, 0.31713)
+texture = ExtResource("8_n4je3")
+
+[connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]
