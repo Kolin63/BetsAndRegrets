@@ -12,12 +12,9 @@ var soul
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	money = 5.32
-<<<<<<< Updated upstream
 	balls = 1
-=======
 	set_soul(4)
 	set_balls(day)
->>>>>>> Stashed changes
 	generate(18)
 
 
