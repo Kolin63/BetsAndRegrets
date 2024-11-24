@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://nig1mh6ytb7d"
+path="res://.godot/imported/I was so close! .wav-e85613b4b801f9c061b90a7144a3fd12.sample"
+
+[deps]
+
+source_file="res://counterspellVoEdit/I was so close! .wav"
+dest_files=["res://.godot/imported/I was so close! .wav-e85613b4b801f9c061b90a7144a3fd12.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

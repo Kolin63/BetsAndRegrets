@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8b8jiv7fcv88"
+path="res://.godot/imported/Back again.wav-5536e52c15070812e25c8228bed84d15.sample"
+
+[deps]
+
+source_file="res://counterspellVoEdit/Back again.wav"
+dest_files=["res://.godot/imported/Back again.wav-5536e52c15070812e25c8228bed84d15.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

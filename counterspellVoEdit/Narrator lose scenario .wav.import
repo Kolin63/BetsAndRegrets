@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmdwyjyoj1slo"
+path="res://.godot/imported/Narrator lose scenario .wav-ff7551aaf7905464187f05ec91633c4c.sample"
+
+[deps]
+
+source_file="res://counterspellVoEdit/Narrator lose scenario .wav"
+dest_files=["res://.godot/imported/Narrator lose scenario .wav-ff7551aaf7905464187f05ec91633c4c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
