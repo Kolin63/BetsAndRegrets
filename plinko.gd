@@ -6,13 +6,14 @@ extends Node2D
 var money
 var balls 
 var day = 1
+var soul = 4
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	money = 5.32
 	balls = 1
-	#set_soul(4)
+	set_soul(4)
 	set_balls(day)
 	generate(18)
 
@@ -20,7 +21,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Spawn Ball
-	if (Input.is_action_pressed("click") && balls > 0):
+	if (Input.is_action_just_pressed("click") && balls > 0):
 		var ball = Ball.duplicate()
 		ball.position = get_viewport().get_mouse_position()
 		ball.position.y = 25
@@ -36,6 +37,10 @@ func _process(delta: float) -> void:
 		$BallPreview.position.y = 25
 	else:
 		$BallPreview.visible = false
+
+
+func _on_next_day_pressed() -> void:
+	new_day()
 
 
 func new_day():
@@ -55,6 +60,11 @@ func set_money(x):
 func set_balls(x):
 	balls = x
 	$BallsCount.text = "Balls: " + str(balls)
+
+
+func set_soul(x):
+	soul = x
+	$Soul.frame = soul - 1
 
 
 # Calculates total amount of pegs
