@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://du31jy3465by3"]
+[gd_scene load_steps=36 format=3 uid="uid://du31jy3465by3"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -9,11 +9,23 @@
 [ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="7_0267x"]
 [ext_resource type="Texture2D" uid="uid://gbow77wfi4gu" path="res://Background.png" id="8_n4je3"]
 [ext_resource type="Texture2D" uid="uid://64i8xwmvx378" path="res://icon.svg" id="9_edg7b"]
+[ext_resource type="Texture2D" uid="uid://cyjuxg36tkphq" path="res://HAAC_Art/PNGHACKDead1.png" id="10_aw83s"]
 [ext_resource type="Texture2D" uid="uid://7t7uyrusept3" path="res://HAAC_Art/PNGHACKHappy1.png" id="10_cqxkd"]
+[ext_resource type="Texture2D" uid="uid://jx04j3bhrfdc" path="res://HAAC_Art/PNGHACKDevilNormal.png" id="11_oatle"]
 [ext_resource type="Texture2D" uid="uid://d2q23uo3vl2lr" path="res://HACKSOUL1.png" id="11_tn2iv"]
 [ext_resource type="Texture2D" uid="uid://jf6turmn3icr" path="res://HACKSOUL2.png" id="12_al33d"]
+[ext_resource type="Texture2D" uid="uid://bl2dv0l6xch5e" path="res://HAAC_Art/PNGHACKDevilTalkClosed.png" id="12_ttu80"]
+[ext_resource type="Texture2D" uid="uid://ctjr18q46xla8" path="res://HAAC_Art/PNGHACKDevilTalkOpen.png" id="13_0qccx"]
 [ext_resource type="Texture2D" uid="uid://ds7yasr5flsqu" path="res://HACKSOUL3.png" id="13_ilpty"]
 [ext_resource type="Texture2D" uid="uid://bf1e4jo52mg5k" path="res://HACKSOUL4.png" id="14_1ku0v"]
+[ext_resource type="Texture2D" uid="uid://bu6n3513ybu2j" path="res://HACKSPEECHBUBBLE.png" id="15_2gwqr"]
+[ext_resource type="Texture2D" uid="uid://bjd3s820q2d5q" path="res://HAAC_Art/PNGHACKMiserable1.png" id="15_ov51s"]
+[ext_resource type="Texture2D" uid="uid://bb4ql0ythhcq7" path="res://HAAC_Art/PNGHACKQuestion1.png" id="16_sx48g"]
+[ext_resource type="Texture2D" uid="uid://bjk3tmbq81wvq" path="res://HAAC_Art/PNGHACKSad1.png" id="17_35noj"]
+[ext_resource type="Texture2D" uid="uid://sssv2k7f75po" path="res://HAAC_Art/PNGHACKTalkingClosed1.png" id="18_ue01e"]
+[ext_resource type="Texture2D" uid="uid://btsb05g0ym8m1" path="res://HAAC_Art/PNGHACKTalkingOpen1.png" id="19_5dvqr"]
+[ext_resource type="Texture2D" uid="uid://b46mokl42m4cv" path="res://HAAC_Art/PNGHACKThink1.png" id="20_fimgl"]
+[ext_resource type="Script" path="res://dialouge_manager.gd" id="26_oeq1l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -39,10 +51,80 @@ absorbent = true
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("10_aw83s")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_oatle")
+}],
+"loop": true,
+"name": &"devil_normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ttu80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0qccx")
+}],
+"loop": true,
+"name": &"devil_talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("10_cqxkd")
 }],
 "loop": true,
 "name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ov51s")
+}],
+"loop": true,
+"name": &"miserable",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_sx48g")
+}],
+"loop": true,
+"name": &"question",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_35noj")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ue01e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5dvqr")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_fimgl")
+}],
+"loop": true,
+"name": &"think",
 "speed": 5.0
 }]
 
@@ -220,13 +302,37 @@ text = "Next Day"
 position = Vector2(115, 548)
 scale = Vector2(0.22662, 0.22662)
 sprite_frames = SubResource("SpriteFrames_xxycf")
-animation = &"happy"
+animation = &"think"
 
 [node name="Soul" type="AnimatedSprite2D" parent="."]
 position = Vector2(1016, 225)
 scale = Vector2(0.156019, 0.156019)
 sprite_frames = SubResource("SpriteFrames_rtaw0")
 frame = 3
+
+[node name="Bubble" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(686, 263)
+scale = Vector2(0.211111, 0.211111)
+texture = ExtResource("15_2gwqr")
+
+[node name="Label" type="Label" parent="Bubble"]
+offset_left = -1042.1
+offset_top = -464.21
+offset_right = 1524.9
+offset_bottom = 805.79
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 200
+text = "blabblblalblh blahlalhlb lbalha"
+autowrap_mode = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Bubble"]
+position = Vector2(-3249.47, -1245.79)
+scale = Vector2(4.73684, 4.73684)
+
+[node name="DialougeManager" type="Node" parent="."]
+script = ExtResource("26_oeq1l")
 
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]
