@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8pm8s6api0c"
+path="res://.godot/imported/The Devil Plays Plinko.mp3-84ffe52e1e3bdf1ba000510a70c29ea2.mp3str"
+
+[deps]
+
+source_file="res://counterspellVO/The Devil Plays Plinko.mp3"
+dest_files=["res://.godot/imported/The Devil Plays Plinko.mp3-84ffe52e1e3bdf1ba000510a70c29ea2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

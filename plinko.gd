@@ -5,9 +5,13 @@ extends Node2D
 @onready var Bubble = $Bubble
 
 var money
-var balls 
+var balls = 1
 var day = 1
 var soul = 4
+
+var money_before
+
+var times_zeroed = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,8 +22,6 @@ func _ready() -> void:
 	set_soul(4)
 	set_balls(day)
 	generate(18)
-	
-	$Bubble.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,7 +30,7 @@ func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("click") && balls > 0):
 		var ball = Ball.duplicate()
 		ball.position = get_viewport().get_mouse_position()
-		#ball.position.y = 25
+		ball.position.y = 25
 		ball.gravity_scale = 1
 		add_child(ball)
 		set_balls(balls - 1)
@@ -57,13 +59,26 @@ func get_money():
 
 
 func set_money(x):
+	money_before = money
 	money = x
 	$Money.text = "$" + str(money)
 	if (money == 0):
 		set_soul(soul - 1)
 		day = 1
 		set_balls(day)
-		set_money(5.32)
+		set_money(money_before * 0.1)
+		
+		times_zeroed += 1
+		if (times_zeroed == 1):
+			$Dialouge.dia(3, Bubble)
+		if (times_zeroed == 2):
+			$Dialouge.dia(4, Bubble)
+		if (times_zeroed == 3):
+			$Dialouge.dia(5, Bubble)
+		if (times_zeroed == 4):
+			$Dialouge.dia(7, Bubble)
+	if (money == 10000000):
+		$Dialouge.dia(6, Bubble)
 
 
 func set_balls(x):
@@ -162,8 +177,5 @@ func generate(base_pegs):
 				bucket.set_multiplier((0.25 * dist_from_center * dist_from_center) / 2)
 
 
-func say(text, audio):
-	$Bubble.visible = true
-	$Bubble/Label.text = text
-	$AudioStreamPlayer2D.stream = audio
-	$AudioStreamPlayer2D.play()
+func _on_music_finished() -> void:
+	$Music.play()

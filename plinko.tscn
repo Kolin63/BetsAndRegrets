@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://du31jy3465by3"]
+[gd_scene load_steps=39 format=3 uid="uid://du31jy3465by3"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -25,7 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://sssv2k7f75po" path="res://HAAC_Art/PNGHACKTalkingClosed1.png" id="18_ue01e"]
 [ext_resource type="Texture2D" uid="uid://btsb05g0ym8m1" path="res://HAAC_Art/PNGHACKTalkingOpen1.png" id="19_5dvqr"]
 [ext_resource type="Texture2D" uid="uid://b46mokl42m4cv" path="res://HAAC_Art/PNGHACKThink1.png" id="20_fimgl"]
+[ext_resource type="Script" path="res://bubble.gd" id="26_ak4gw"]
 [ext_resource type="Script" path="res://dialouge_manager.gd" id="26_oeq1l"]
+[ext_resource type="AudioStream" uid="uid://dgbjuhc37curm" path="res://The Devil Plays Plinko.mp3" id="27_6umug"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -147,6 +149,10 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m51wl"]
+font_size = 150
+font_color = Color(0, 0, 0, 1)
 
 [node name="Plinko" type="Node2D"]
 script = ExtResource("1_hghkl")
@@ -311,10 +317,11 @@ sprite_frames = SubResource("SpriteFrames_rtaw0")
 frame = 3
 
 [node name="Bubble" type="Sprite2D" parent="."]
-visible = false
+z_index = 8
 position = Vector2(686, 263)
 scale = Vector2(0.211111, 0.211111)
 texture = ExtResource("15_2gwqr")
+script = ExtResource("26_ak4gw")
 
 [node name="Label" type="Label" parent="Bubble"]
 offset_left = -1042.1
@@ -324,12 +331,18 @@ offset_bottom = 805.79
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_0267x")
 theme_override_font_sizes/font_size = 200
-text = "blabblblalblh blahlalhlb lbalha"
+text = "You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant..."
+label_settings = SubResource("LabelSettings_m51wl")
 autowrap_mode = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Bubble"]
 position = Vector2(-3249.47, -1245.79)
 scale = Vector2(4.73684, 4.73684)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Bubble"]
+position = Vector2(-3249.47, -1245.79)
+scale = Vector2(4.73684, 4.73684)
+stream = ExtResource("27_6umug")
 
 [node name="DialougeManager" type="Node" parent="."]
 script = ExtResource("26_oeq1l")
@@ -337,3 +350,5 @@ script = ExtResource("26_oeq1l")
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]
 [connection signal="pressed" from="NextDay" to="." method="_on_next_day_pressed"]
+[connection signal="finished" from="Bubble/AudioStreamPlayer2D" to="Bubble" method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Bubble/Music" to="." method="_on_music_finished"]
