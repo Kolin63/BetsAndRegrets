@@ -18,13 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://ctjr18q46xla8" path="res://HAAC_Art/PNGHACKDevilTalkOpen.png" id="13_0qccx"]
 [ext_resource type="Texture2D" uid="uid://ds7yasr5flsqu" path="res://HACKSOUL3.png" id="13_ilpty"]
 [ext_resource type="Texture2D" uid="uid://bf1e4jo52mg5k" path="res://HACKSOUL4.png" id="14_1ku0v"]
-[ext_resource type="Texture2D" uid="uid://bu6n3513ybu2j" path="res://HACKSPEECHBUBBLE.png" id="15_2gwqr"]
 [ext_resource type="Texture2D" uid="uid://bjd3s820q2d5q" path="res://HAAC_Art/PNGHACKMiserable1.png" id="15_ov51s"]
 [ext_resource type="Texture2D" uid="uid://bb4ql0ythhcq7" path="res://HAAC_Art/PNGHACKQuestion1.png" id="16_sx48g"]
 [ext_resource type="Texture2D" uid="uid://bjk3tmbq81wvq" path="res://HAAC_Art/PNGHACKSad1.png" id="17_35noj"]
 [ext_resource type="Texture2D" uid="uid://sssv2k7f75po" path="res://HAAC_Art/PNGHACKTalkingClosed1.png" id="18_ue01e"]
 [ext_resource type="Texture2D" uid="uid://btsb05g0ym8m1" path="res://HAAC_Art/PNGHACKTalkingOpen1.png" id="19_5dvqr"]
 [ext_resource type="Texture2D" uid="uid://b46mokl42m4cv" path="res://HAAC_Art/PNGHACKThink1.png" id="20_fimgl"]
+[ext_resource type="Script" path="res://Speech.gd" id="26_2riiv"]
 [ext_resource type="Script" path="res://bubble.gd" id="26_ak4gw"]
 [ext_resource type="Script" path="res://dialouge_manager.gd" id="26_oeq1l"]
 [ext_resource type="AudioStream" uid="uid://dgbjuhc37curm" path="res://The Devil Plays Plinko.mp3" id="27_6umug"]
@@ -48,6 +48,10 @@ size = Vector2(16, 12)
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7wb4y"]
 bounce = 1.0
 absorbent = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbslg"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xxycf"]
 animations = [{
@@ -150,10 +154,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_m51wl"]
-font_size = 150
-font_color = Color(0, 0, 0, 1)
-
 [node name="Plinko" type="Node2D"]
 script = ExtResource("1_hghkl")
 
@@ -196,6 +196,7 @@ z_index = 2
 position = Vector2(-224, -123)
 physics_material_override = SubResource("PhysicsMaterial_00t77")
 gravity_scale = 0.0
+can_sleep = false
 freeze = true
 script = ExtResource("5_uq8cn")
 metadata/_edit_group_ = true
@@ -207,7 +208,6 @@ texture = ExtResource("6_3dtiq")
 offset = Vector2(85.88, -76.89)
 
 [node name="Label" type="Label" parent="Bucket/Sprite2D"]
-z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -241,27 +241,28 @@ physics_material_override = SubResource("PhysicsMaterial_7wb4y")
 gravity_scale = 0.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket/Absorb"]
-polygon = PackedVector2Array(-8, -10, -8, 5, 8, 5, 8, -10, 9, -10, 9, 6, -9, 6, -9, -10)
+polygon = PackedVector2Array(-8, -10, -8, 4, 8, 4, 8, -10, 9, -10, 9, 6, -9, 6, -9, -10)
 
 [node name="Money" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("7_0267x")
 theme_override_font_sizes/font_size = 150
 text = "$5.32"
 
 [node name="BallsCount" type="Label" parent="."]
-offset_left = 8.0
+offset_left = 884.0
 offset_top = 116.0
-offset_right = 229.0
+offset_right = 1147.0
 offset_bottom = 176.0
-theme_override_constants/outline_size = 5
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("7_0267x")
 theme_override_font_sizes/font_size = 60
-text = "Balls: 1"
+text = "Balls: 1 / 1"
 
 [node name="DayCount" type="Label" parent="."]
 anchors_preset = 1
@@ -272,7 +273,8 @@ offset_top = 10.0
 offset_right = 1128.0
 offset_bottom = 113.0
 grow_horizontal = 0
-theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("7_0267x")
 theme_override_font_sizes/font_size = 150
 text = "Day 1"
@@ -304,45 +306,59 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Next Day"
 
-[node name="Man" type="AnimatedSprite2D" parent="."]
+[node name="Man" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_fbslg")
+freeze = true
+
+[node name="Man" type="AnimatedSprite2D" parent="Man"]
 position = Vector2(115, 548)
 scale = Vector2(0.22662, 0.22662)
 sprite_frames = SubResource("SpriteFrames_xxycf")
 animation = &"think"
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Man"]
+polygon = PackedVector2Array(23, 600, 22, 626, 233, 626, 221, 588, 174, 527, 128, 512, 89, 518, 43, 554)
+
 [node name="Soul" type="AnimatedSprite2D" parent="."]
-position = Vector2(1016, 225)
+position = Vector2(1024, 250)
 scale = Vector2(0.156019, 0.156019)
 sprite_frames = SubResource("SpriteFrames_rtaw0")
 frame = 3
 
 [node name="Bubble" type="Sprite2D" parent="."]
 z_index = 8
-position = Vector2(686, 263)
+position = Vector2(246, 277)
 scale = Vector2(0.211111, 0.211111)
-texture = ExtResource("15_2gwqr")
 script = ExtResource("26_ak4gw")
 
-[node name="Label" type="Label" parent="Bubble"]
-offset_left = -1042.1
-offset_top = -464.21
-offset_right = 1524.9
-offset_bottom = 805.79
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="Speech" type="TextEdit" parent="Bubble"]
+anchors_preset = -1
+anchor_left = -1043.85
+anchor_top = -486.796
+offset_left = -93.1499
+offset_top = 12.796
+offset_right = 40.0
+offset_bottom = 876.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("7_0267x")
 theme_override_font_sizes/font_size = 200
-text = "You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant..."
-label_settings = SubResource("LabelSettings_m51wl")
-autowrap_mode = 3
+text = "You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant...
+"
+wrap_mode = 1
+scroll_smooth = true
+script = ExtResource("26_2riiv")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Bubble"]
+[node name="Dialogue" type="AudioStreamPlayer2D" parent="Bubble"]
 position = Vector2(-3249.47, -1245.79)
 scale = Vector2(4.73684, 4.73684)
+panning_strength = 0.0
 
 [node name="Music" type="AudioStreamPlayer2D" parent="Bubble"]
 position = Vector2(-3249.47, -1245.79)
 scale = Vector2(4.73684, 4.73684)
 stream = ExtResource("27_6umug")
+volume_db = -10.511
 
 [node name="DialougeManager" type="Node" parent="."]
 script = ExtResource("26_oeq1l")
@@ -350,5 +366,5 @@ script = ExtResource("26_oeq1l")
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]
 [connection signal="pressed" from="NextDay" to="." method="_on_next_day_pressed"]
-[connection signal="finished" from="Bubble/AudioStreamPlayer2D" to="Bubble" method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Bubble/Dialogue" to="Bubble" method="_on_audio_stream_player_2d_finished"]
 [connection signal="finished" from="Bubble/Music" to="." method="_on_music_finished"]

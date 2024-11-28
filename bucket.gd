@@ -4,11 +4,6 @@ extends RigidBody2D
 var multiplier
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
 func set_multiplier(x):
 	multiplier = x
 	$Sprite2D/Label.text = "x" + str(multiplier)
@@ -20,5 +15,9 @@ func _process(delta: float) -> void:
 
 
 func _on_detection_body_entered(body: Node2D) -> void:
-	if (body.editor_description == "ball"):
-		Plinko.set_money(round(Plinko.get_money() * multiplier * 100) / 100)
+	# this is a really weird hack but it works, ok? dont judge me
+	if (body.editor_description != "ball"):
+		return
+	
+	body.freeze = true
+	Plinko.set_money(Plinko.get_money() * multiplier)

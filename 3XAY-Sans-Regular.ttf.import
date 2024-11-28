@@ -15,7 +15,6 @@ dest_files=["res://.godot/imported/3XAY-Sans-Regular.ttf-9524b8757dec817429ddb1d
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

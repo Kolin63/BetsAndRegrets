@@ -1,8 +1,12 @@
 extends Node2D
+
+const DEBUG_MODE = true
+
 @onready var Peg = $Peg
 @onready var Bucket = $Bucket
 @onready var Ball = $Ball
 @onready var Bubble = $Bubble
+@onready var DialougeManager = $DialougeManager
 
 var money
 var balls = 1
@@ -13,10 +17,16 @@ var money_before
 
 var times_zeroed = 0
 
+var ball_array = []
+
+var music_mute = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$DialougeManager.dia(0, Bubble)
+	if (DEBUG_MODE):
+		print("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ DEBUG MODE ACTIVATED ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️\n\t\tDisable it on Plinko.gd line 3\n")
+	
+	DialougeManager.dia(0)
 	money = 5.32
 	balls = 1
 	set_soul(4)
@@ -30,10 +40,17 @@ func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("click") && balls > 0):
 		var ball = Ball.duplicate()
 		ball.position = get_viewport().get_mouse_position()
-		ball.position.y = 25
+		if (!DEBUG_MODE):
+			ball.position.y = 25
 		ball.gravity_scale = 1
 		add_child(ball)
 		set_balls(balls - 1)
+		ball_array.append(ball)
+	
+	# Toggle Mute Music, only when there is no dialogue 
+	if (Input.is_action_just_pressed("right click") && $Bubble/Dialogue.playing == false):
+		music_mute = !music_mute
+		$Bubble/Music.stream_paused = music_mute
 	
 	
 	# Ball Preview
@@ -51,7 +68,11 @@ func _on_next_day_pressed() -> void:
 
 func new_day():
 	day += 1
+	$DayCount.text = "Day " + str(day)
 	set_balls(day)
+	for i in ball_array:
+		remove_child(i)
+	ball_array.clear()
 
 
 func get_money():
@@ -60,30 +81,32 @@ func get_money():
 
 func set_money(x):
 	money_before = money
-	money = x
+	money = round_place(x, 2)
 	$Money.text = "$" + str(money)
 	if (money == 0):
 		set_soul(soul - 1)
-		day = 1
+		new_day()
 		set_balls(day)
-		set_money(money_before * 0.1)
+		set_money(money * 0.1 + 0.01)
 		
 		times_zeroed += 1
 		if (times_zeroed == 1):
-			$Dialouge.dia(3, Bubble)
+			DialougeManager.dia(3, Bubble)
 		if (times_zeroed == 2):
-			$Dialouge.dia(4, Bubble)
+			DialougeManager.dia(4, Bubble)
 		if (times_zeroed == 3):
-			$Dialouge.dia(5, Bubble)
+			DialougeManager.dia(5, Bubble)
 		if (times_zeroed == 4):
-			$Dialouge.dia(7, Bubble)
-	if (money == 10000000):
-		$Dialouge.dia(6, Bubble)
+			DialougeManager.dia(7, Bubble)
+		if (times_zeroed == 5):
+			get_tree().quit()
+	if (money >= 10000000):
+		DialougeManager.dia(6, Bubble)
 
 
 func set_balls(x):
 	balls = x
-	$BallsCount.text = "Balls: " + str(balls)
+	$BallsCount.text = "Balls: " + str(balls) + " / " + str(day)
 
 
 func set_soul(x):
@@ -145,37 +168,69 @@ func get_peg_position_x(pegs_in_row, peg_index, peg_size, peg_padding, middle):
 	return position 
 
 
+# Example: 
+# round_place(5.3678, 2)
+# returns 5.37
+#
+# round_place(5.3648, 2)
+# returns 5.36
+func round_place(num,places):
+	return (round(num*pow(10,places))/pow(10,places))
+
+
 # Generate the pegs
 func generate(base_pegs):
+	# Declare some variables 
 	var viewport_size = get_viewport().get_visible_rect().size
 	const bottom_padding = 40
 	const side_padding = 20
 	
+	# Wow that's a lot of variables!
 	const peg_size = 18
 	const peg_padding = peg_size
 	
+	# Oh my gosh there are more variables!
 	var total_pegs = get_total_pegs(base_pegs)
 	var rows = get_rows(base_pegs)
 	var middle = get_middle_of_viewport_x(viewport_size.x, peg_size)
 	
+	# Oh shoot! I miss the simplicity of variable declarations! 
+	# There's a nested for loop NOOOOO
+	
+	# Iterate for each row
 	for i in range(1, rows):
+		# There is one less peg each row
 		var pegs_in_row = base_pegs - i + 1
 		
+		# Iterate for each peg
 		for j in range(1, pegs_in_row):
 			var peg = Peg.duplicate()
+			# Do some weird stuff to make it in the right spot
+			#
+			# I wrote this a while ago and I don't even want to try and
+			# figure out how it works
 			peg.position.x = (get_peg_position_x(pegs_in_row, j, peg_size, peg_padding, middle))
 			peg.position.y = (viewport_size.y - bottom_padding) - ((peg_size + peg_padding) * i)
 			add_child(peg)
-			if (i == 1):
+			
+			# If it's the bottom row, we need some BUCKETS!
+			if (i == 1 && j < pegs_in_row - 1):
 				var bucket = Bucket.duplicate()
+				# Move it below and center it
 				bucket.position = peg.position
 				bucket.position.x += peg_padding
 				bucket.position.y += peg_padding * 3
-				add_child(bucket)
+				# Find distance from center
 				var dist_from_center = abs(pegs_in_row / 2 - j)
-				bucket.set_multiplier(0.25 * dist_from_center * dist_from_center / 2)
-				bucket.set_multiplier((0.25 * dist_from_center * dist_from_center) / 2)
+				# We do this so that it is symmetrical 
+				if (j <= 8):
+					dist_from_center -= 1
+				# multiplier = (0.25 * dist_from_center^2) / 2, rounded to 100th
+				# https://www.desmos.com/calculator/hvyub2amug
+				bucket.set_multiplier(round_place((0.25 * pow(dist_from_center, 2) / 2), 2))
+				# Add Bucket
+				add_child(bucket)
 
 
 func _on_music_finished() -> void:
-	$Music.play()
+	$Bubble/Music.playing = !music_mute
