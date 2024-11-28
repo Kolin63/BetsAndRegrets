@@ -11,7 +11,7 @@ If you lose too much, you'll be the devil's indentured servant...
 Every day, you can play Plinko once to try and get some money, just drop a ball or two and see where it leads you! Each day you play, you get an extra ball. For example, on day 1 you would have one ball but on day 7 you would have 7 balls to use! When you're done with that day, press the next day button to progress in the story!
 [Insert ingame screenshots]
 
-## Installation / How to play
+## Installation / How to play 🔧
 You have two options:
 1. Go and play on [Itch.io!](https://kolin63.itch.io/bets-and-regrets)
 2. Download the source code, open it in Godot 4, and compile it in whatever format you wish!
