@@ -46,3 +46,4 @@ Hayden was the artist in this group. He hand-drew every single visual element (o
 align with our vision for the game, and to help the story come to life. He was also the main voice actor, for both the intro
 and the main character. He is a 16 year old programmer who mainly uses Python, and also uses some Javascript.
 He primarily studies Medical at Bergen County Academies, so he programs on the side.
+Feel free to contact him on Discord at `lehamger`
