@@ -1,6 +1,8 @@
 extends Sprite2D
 
-var index = -1
+@onready var Music = $Music
+
+var index = -1.0
 
 func _ready():
 	visible = false
@@ -13,6 +15,7 @@ func _process(delta):
 
 
 func set_i(i):
+	print("bubble.gd: setting i to ", i)
 	index = i
 
 
@@ -21,6 +24,7 @@ func get_i():
 
 
 func say(text, audio, i):
+	print("bubble.gd: index is ", i)
 	set_i(i)
 	$Music.stream_paused = true
 	visible = true

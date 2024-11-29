@@ -1,6 +1,6 @@
 extends Node2D
 
-const DEBUG_MODE = true
+const DEBUG_MODE = false
 
 @onready var Peg = $Peg
 @onready var Bucket = $Bucket
@@ -23,15 +23,17 @@ var music_mute = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if (DEBUG_MODE):
-		print("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ DEBUG MODE ACTIVATED ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️\n\t\tDisable it on Plinko.gd line 3\n")
-	
+	DialougeManager.set_bubble(Bubble)
 	DialougeManager.dia(0)
 	money = 5.32
 	balls = 1
 	set_soul(4)
 	set_balls(day)
 	generate(18)
+	
+	if (DEBUG_MODE):
+		print("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ DEBUG MODE ACTIVATED ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️\n\t\tDisable it on Plinko.gd line 3\n")
+		$DayCount.text = "DEBUG MODE"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,6 +62,11 @@ func _process(delta: float) -> void:
 		$BallPreview.position.y = 25
 	else:
 		$BallPreview.visible = false
+	
+	
+	# Dialogue Debug
+	if (Input.is_action_just_pressed("space") && DEBUG_MODE):
+		$DialougeManager.test(15)
 
 
 func _on_next_day_pressed() -> void:
@@ -91,17 +98,17 @@ func set_money(x):
 		
 		times_zeroed += 1
 		if (times_zeroed == 1):
-			DialougeManager.dia(3, Bubble)
+			DialougeManager.dia(3)
 		if (times_zeroed == 2):
-			DialougeManager.dia(4, Bubble)
+			DialougeManager.dia(4)
 		if (times_zeroed == 3):
-			DialougeManager.dia(5, Bubble)
+			DialougeManager.dia(5)
 		if (times_zeroed == 4):
-			DialougeManager.dia(7, Bubble)
+			DialougeManager.dia(7)
 		if (times_zeroed == 5):
 			get_tree().quit()
 	if (money >= 10000000):
-		DialougeManager.dia(6, Bubble)
+		DialougeManager.dia(6)
 
 
 func set_balls(x):
