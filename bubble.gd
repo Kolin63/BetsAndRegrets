@@ -12,6 +12,8 @@ func _process(delta):
 	if (Input.is_action_just_pressed("right click") && $Dialogue.playing):
 		$Dialogue.playing = false
 		get_parent().DialogueManager.next_dia()
+	
+	$RigidBody2D/CollisionShape2D.disabled = !visible
 
 
 func say(text, audio, i, music = $Music.stream):
