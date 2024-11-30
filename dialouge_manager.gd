@@ -75,6 +75,8 @@ func do_dia(index):
 		index,
 		null)
 		set_man("talking")
+		
+		get_parent().is_intro = false
 	
 	# Only x?
 	elif (index == 2):

@@ -19,10 +19,9 @@ var money_before = money
 var times_zeroed = 0
 var times_lose_sequential = 0
 var soul_day_before = soul
+var is_intro = 1
 
 var ball_array = []
-
-var music_mute = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,11 +51,6 @@ func _process(delta: float) -> void:
 		set_balls(balls - 1)
 		ball_array.append(ball)
 	
-	# Toggle Mute Music, only when there is no dialogue 
-	if (Input.is_action_just_pressed("right click") && $Bubble/Dialogue.playing == false):
-		music_mute = !music_mute
-		$Bubble/Music.stream_paused = music_mute
-	
 	
 	# Ball Preview
 	if (balls > 0):
@@ -68,7 +62,7 @@ func _process(delta: float) -> void:
 	
 	
 	# Dialogue Debug
-	if (Input.is_action_just_pressed("space") && !DEBUG_MODE):
+	if (Input.is_action_just_pressed("debug") && !DEBUG_MODE):
 		DEBUG_MODE = true
 		$Debug.visible = true
 
@@ -149,17 +143,18 @@ func get_money():
 	return money
 
 
-func set_money(x):
+func set_money(x, mux = -1):
 	money_before = money
 	money = round_place(x, 2)
 	$Money.text = "$" + str(money)
+	if (money == 0 && mux != 0):
+		set_money(0.01)
 	if (money == 0):
 		set_soul(soul - 1)
 		set_balls(0)
 		set_money(money_before * 0.1 + 0.01)
 		
 		times_zeroed += 1
-		
 	
 	# 10 million dollars win state
 	if (money >= 10000000):
@@ -299,4 +294,4 @@ func generate(base_pegs):
 
 
 func _on_music_finished() -> void:
-	$Bubble/Music.playing = !music_mute
+	$Bubble/Music.play()
