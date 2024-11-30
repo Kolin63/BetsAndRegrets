@@ -97,13 +97,13 @@ func do_dia(index):
 		index,
 		)
 		set_man("miserable")
-	elif (index == 3.2):
+	elif (index == 3.1 + 0.1):
 		Bubble.say("Alright, fine, but when your soul becomes mine, you become mine. Hahahaha...",
 		load("res://counterspellVoEdit/You become mine .wav"), 
 		index,
 		)
 		set_man("devil_talk")
-	elif (index == 3.3):
+	elif (index == 3.1 + 0.1 + 0.1):
 		Bubble.say("At least I'm not back where I started...",
 		load("res://counterspellVoEdit/Back to start.wav"),
 		index,
@@ -130,7 +130,7 @@ func do_dia(index):
 		load("res://counterspellVoEdit/Only have 1 shot left.wav"), 
 		index,
 		load("res://music/Dnd is satanic.mp3"))
-		set_man("devil_talking")
+		set_man("devil_talk")
 	elif (index == 5.1):
 		Bubble.say("N-no... I've really got to be more careful. I need to get back to my family",
 		load("res://counterspellVoEdit/No, gotta be more careful .wav"), 
@@ -157,9 +157,8 @@ func do_dia(index):
 		index,
 		)
 		set_man("hide")
-	elif (index == 6.3):
-		pass
-		# TODO: ADD GAME OVER SCENE
+	elif (index == 6.1 + 0.1 + 0.1):
+		get_tree().change_scene_to_file("res://win.tscn")
 	
 	# lose
 	elif (index == 7):
@@ -176,9 +175,8 @@ func do_dia(index):
 		index,
 		)
 		set_man("dead")
-	elif (index == 7.2):
-		pass
-		# TODO: ADD GAME OVER SCENE
+	elif (index == 7.1 + 0.1):
+		get_tree().change_scene_to_file("res://lose.tscn")
 	
 	# when he wins a day, has max souls, earnings are above 2x exclusive
 	elif (index == 8):

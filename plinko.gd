@@ -175,6 +175,8 @@ func set_soul(x):
 	soul_day_before = soul
 	soul = x
 	$Soul.frame = soul - 1
+	if (soul <= 0):
+		$Soul.visible = false
 
 
 # Calculates total amount of pegs

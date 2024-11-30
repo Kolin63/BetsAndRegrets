@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://nqdp4rlrcp7r"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_gmpaf"]
+[ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="2_hq76u"]
+[ext_resource type="AudioStream" uid="uid://bgjra4i6rv1k0" path="res://music/Soulless.mp3" id="3_3oipj"]
+[ext_resource type="Texture2D" uid="uid://cyjuxg36tkphq" path="res://HAAC_Art/PNGHACKDead1.png" id="4_nkgp0"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_gmpaf")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = -18.0
+offset_right = 1186.0
+offset_bottom = 669.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 49.0
+offset_top = 142.0
+offset_right = 1091.0
+offset_bottom = 342.0
+theme_override_fonts/font = ExtResource("2_hq76u")
+theme_override_font_sizes/font_size = 300
+text = "You Lose"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 385.0
+offset_top = 384.0
+offset_right = 747.0
+offset_bottom = 459.0
+theme_override_fonts/font = ExtResource("2_hq76u")
+theme_override_font_sizes/font_size = 100
+text = "Play Again"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3oipj")
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(909, 467)
+scale = Vector2(0.419444, 0.419444)
+texture = ExtResource("4_nkgp0")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
