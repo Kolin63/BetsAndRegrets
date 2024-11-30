@@ -164,6 +164,7 @@ position = Vector2(-157, -147)
 mass = 0.077
 physics_material_override = SubResource("PhysicsMaterial_jwu4b")
 gravity_scale = 0.0
+can_sleep = false
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
@@ -179,6 +180,7 @@ shape = SubResource("CircleShape2D_x5qog")
 position = Vector2(-234, -207)
 physics_material_override = SubResource("PhysicsMaterial_jjg6k")
 gravity_scale = 0.0
+can_sleep = false
 freeze = true
 script = ExtResource("2_73qfo")
 metadata/_edit_group_ = true
