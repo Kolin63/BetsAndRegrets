@@ -5,12 +5,20 @@ var multiplier = 1
 var modifier = 0
 var total
 
+var max_mux = 1
+
 
 func set_multiplier(mux, mod = modifier): 
 	multiplier = mux
 	modifier = mod
 	total = mux + mod
-	$Sprite2D/Label.text = "x" + str(total)
+	$Label.text = "x" + str(total)
+	
+	if (total > max_mux): 
+		max_mux = total
+	
+	var ratio = 1 / max_mux 
+	$Sprite2D.modulate = Color(1, 1 - ratio * (total/2) * (total/2), 0)
 
 
 func set_modifier(mod):
@@ -22,7 +30,7 @@ func set_modifier(mod):
 func _process(delta: float) -> void:
 	if (multiplier == 0 && get_parent().is_intro):
 		set_modifier(0.1)
-	else:
+	elif (multiplier == 0):
 		set_modifier(0)
 
 
