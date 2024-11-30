@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Casino"
+config/name="BetsAndRegrets"
 run/main_scene="res://plinko.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -21,7 +21,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
