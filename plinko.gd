@@ -8,6 +8,7 @@ var DEBUG_MODE = false
 @onready var Bubble = $Bubble
 @onready var DialogueManager = $DialogueManager
 @onready var Man = $Man/Man
+@onready var SFX = $SFX
 
 var money = 5.32
 var balls = 1
@@ -50,6 +51,7 @@ func _process(delta: float) -> void:
 		add_child(ball)
 		set_balls(balls - 1)
 		ball_array.append(ball)
+		$SFX.playsound(load("res://sfx/Drop Ball.wav"))
 	
 	
 	# Ball Preview
@@ -69,6 +71,7 @@ func _process(delta: float) -> void:
 
 func _on_next_day_pressed() -> void:
 	new_day()
+	$SFX.playsound(load("res://sfx/Next Day.wav"))
 
 
 func new_day():

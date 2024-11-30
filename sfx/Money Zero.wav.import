@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0f46sihlbyg"
+path="res://.godot/imported/Money Zero.wav-a59ff65846394829c62b7b1ca78883ed.sample"
+
+[deps]
+
+source_file="res://sfx/Money Zero.wav"
+dest_files=["res://.godot/imported/Money Zero.wav-a59ff65846394829c62b7b1ca78883ed.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

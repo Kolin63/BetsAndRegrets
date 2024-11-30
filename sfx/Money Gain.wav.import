@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://v23yq4vpvab6"
+path="res://.godot/imported/Money Gain.wav-4342b28db2ca527aae7183d41c87a645.sample"
+
+[deps]
+
+source_file="res://sfx/Money Gain.wav"
+dest_files=["res://.godot/imported/Money Gain.wav-4342b28db2ca527aae7183d41c87a645.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

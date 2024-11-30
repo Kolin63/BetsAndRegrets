@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://xlpe0d63mjgi"
+path="res://.godot/imported/Drop Ball.wav-d4e756032d0159349a833df52f81031c.sample"
+
+[deps]
+
+source_file="res://sfx/Drop Ball.wav"
+dest_files=["res://.godot/imported/Drop Ball.wav-d4e756032d0159349a833df52f81031c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

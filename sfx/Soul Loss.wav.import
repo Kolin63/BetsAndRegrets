@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byc8x4cpblxwf"
+path="res://.godot/imported/Soul Loss.wav-377463230c31e83b1d13cf0d61857e03.sample"
+
+[deps]
+
+source_file="res://sfx/Soul Loss.wav"
+dest_files=["res://.godot/imported/Soul Loss.wav-377463230c31e83b1d13cf0d61857e03.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

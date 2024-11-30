@@ -43,4 +43,10 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	
 	if (multiplier == 0):
 		Plinko.money_before = Plinko.money
+		get_parent().SFX.playsound(load("res://sfx/Money Zero.wav"))
 	Plinko.set_money(Plinko.get_money() * multiplier, total)
+	
+	if (multiplier <= 1 && multiplier > 0):
+		get_parent().SFX.playsound(load("res://sfx/Money Loss.wav"))
+	elif (multiplier > 1):
+		get_parent().SFX.playsound(load("res://sfx/Money Gain.wav"))

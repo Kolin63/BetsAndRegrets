@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://du31jy3465by3"]
+[gd_scene load_steps=46 format=3 uid="uid://du31jy3465by3"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://bubble.gd" id="26_ak4gw"]
 [ext_resource type="Script" path="res://dialouge_manager.gd" id="26_oeq1l"]
 [ext_resource type="AudioStream" uid="uid://c7m3dt18if0kt" path="res://music/The Devil Plays Plinko.mp3" id="28_5g33r"]
+[ext_resource type="Script" path="res://SFX.gd" id="29_tj0rt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -438,6 +439,10 @@ frame_progress = 0.266965
 
 [node name="DialogueManager" type="Node" parent="."]
 script = ExtResource("26_oeq1l")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+script = ExtResource("29_tj0rt")
 
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
 [connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]

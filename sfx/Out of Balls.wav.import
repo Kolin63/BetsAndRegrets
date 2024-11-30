@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dw3p3tbkrc5tx"
+path="res://.godot/imported/Out of Balls.wav-330e34383f2932f4a200df9cd0720907.sample"
+
+[deps]
+
+source_file="res://sfx/Out of Balls.wav"
+dest_files=["res://.godot/imported/Out of Balls.wav-330e34383f2932f4a200df9cd0720907.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
