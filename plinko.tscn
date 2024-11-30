@@ -338,6 +338,7 @@ texture_normal = ExtResource("9_8cgbe")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="NextDay/NextDay"]
+layout_mode = 0
 offset_left = 588.0
 offset_top = 750.0
 offset_right = 3226.0
@@ -411,7 +412,6 @@ freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble/RigidBody2D"]
 position = Vector2(-551.842, 201.316)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5q1cg")
 
 [node name="Soul" type="RigidBody2D" parent="."]

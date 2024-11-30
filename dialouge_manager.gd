@@ -19,6 +19,10 @@ func set_man(animation):
 		Man.animation = animation
 
 
+func set_volume(db):
+	Bubble.Dialogue.volume_db = db
+
+
 # Test dialogue, starting at specific line
 # Only for debugging purposes
 var test_index = 0
@@ -62,6 +66,8 @@ func next_dia():
 
 # This is the one that runs it
 func do_dia(index):
+	set_volume(0)
+	
 	# intro
 	if (index == 0):
 		Bubble.say("You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant...", 
@@ -139,6 +145,7 @@ func do_dia(index):
 		index,
 		null)
 		set_man("miserable")
+		set_volume(20)
 	
 	# win
 	elif (index == 6):
@@ -146,7 +153,8 @@ func do_dia(index):
 		load("res://counterspellVoEdit/Grr you've won.wav"), 
 		index,
 		null)
-		set_man("devil_talking")
+		set_man("devil_talk")
+		set_volume(24)
 	elif (index == 6.1):
 		Bubble.say("Yes, YES! I'm free. I'm so sorry for lying and cheating, I'll live life as a better man! I will no longer be my own worst enemy!",
 		load("res://counterspellVoEdit/Yes i am free.wav"), 
@@ -159,6 +167,7 @@ func do_dia(index):
 		index,
 		)
 		set_man("hide")
+		set_volume(24)
 	elif (index == 6.1 + 0.1 + 0.1):
 		get_tree().change_scene_to_file("res://win.tscn")
 	
@@ -186,6 +195,7 @@ func do_dia(index):
 		load("res://counterspellVoEdit/I guess it's something .wav"),
 		index)
 		set_man("talking")
+		set_volume(20)
 	
 	# after he loses 3 times in a row, he has max souls
 	elif (index == 9):
@@ -201,11 +211,13 @@ func do_dia(index):
 			Bubble.say("%*$@!",
 			load("res://counterspellVoEdit/-curse-.wav"),
 			index)
+			set_volume(15)
 		elif (rand == 1):
 			Bubble.say("How am I supposed to get 10 MILLION DOLLARS?",
 			load("res://counterspellVoEdit/10M.wav"),
 			index)
 		set_man("sad")
+	
 	
 	# after he wins and no other conditions are met
 	elif (index == 11):
@@ -247,6 +259,7 @@ func do_dia(index):
 			Bubble.say("Oh! Oh yes! There is hope!",
 			load("res://counterspellVoEdit/Oh yes hope.wav"),
 			index)
+			set_volume(24)
 		elif (rand == 1):
 			Bubble.say("D-do I have a chance? ",
 			load("res://counterspellVoEdit/D-do I have a chance.wav"),
@@ -260,6 +273,7 @@ func do_dia(index):
 			Bubble.say("I'm so sorry for being a liar, this is why I'm here...",
 			load("res://counterspellVoEdit/Im sorry liar .wav"),
 			index)
+			set_volume(24)
 		elif (rand == 1):
 			Bubble.say("Cheating at life landed me here... ",
 			load("res://counterspellVoEdit/Cheating .wav"),
@@ -286,6 +300,7 @@ func do_dia(index):
 		load("res://counterspellVoEdit/I have a chance .wav"),
 		index)
 		set_man("happy")
+		set_volume(24)
 	
 	else:
 		Bubble.exit()

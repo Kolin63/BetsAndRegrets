@@ -26,7 +26,7 @@ var ball_array = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	DialogueManager.set_bubble(Bubble)
-	DialogueManager.dia(0)
+	DialogueManager.dia(16)
 	money = 5.32
 	balls = 1
 	set_soul(4)
