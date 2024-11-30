@@ -1,6 +1,6 @@
 extends Node2D
 
-const DEBUG_MODE = true
+const DEBUG_MODE = false
 
 @onready var Peg = $Peg
 @onready var Bucket = $Bucket
@@ -83,21 +83,27 @@ func new_day():
 		remove_child(i)
 	ball_array.clear()
 	
-	soul_day_before = soul
-	print(soul_day_before)
-	
 	
 	if (money < money_before):
 		times_lose_sequential += 1
 	else:
 		times_lose_sequential = 0
 	
-	if (soul == 4 && money_before > money && money > money_before * 2):
-		# wins day, max soul, earnings between 1x and 2x
+	if (soul == 4 && money_before > money && money > money_before * 5):
+		# wins day, max soul, earnings between 1x and 5x
 		DialogueManager.dia(2)
-	elif (soul == 4 && money > money_before * 2):
-		# wins day, max soul, earnings above 2x
+	elif (soul == 4 && money > money_before * 5):
+		# wins day, max soul, earnings above 5x
 		DialogueManager.dia(8)
+	elif (soul_day_before == 2 && money > money_before):
+		# win day, day after lose 2 soul
+		DialogueManager.dia(16)
+	elif (soul_day_before == 3 && money > money_before):
+		# win day, day after lose 3 soul
+		DialogueManager.dia(20)
+	elif (money > money_before && money > 9000000):
+		# win day, money > 9 mil (IM SO CLOSE!!! 🥵)
+		DialogueManager.dia(18)
 	elif (money > money_before):
 		# win, no other conditions
 		DialogueManager.dia(11)
@@ -105,6 +111,15 @@ func new_day():
 	if (soul == 4 && times_lose_sequential == 3):
 		# max soul, 3 loss in row
 		DialogueManager.dia(9)
+	elif (soul_day_before == 2 && money < money_before):
+		# day after lose 2 soul, lost round
+		DialogueManager.dia(15)
+	elif (soul_day_before == 3 && money < money_before):
+		# day after lose 3 soul, lost round
+		DialogueManager.dia(17)
+	elif (money_before > 9000000 && money < 9000000):
+		# lose, goes under 9 mil
+		DialogueManager.dia(19)
 	elif (money < money_before):
 		# loses, no other conditions
 		DialogueManager.dia(10)
@@ -112,6 +127,9 @@ func new_day():
 	
 	if (day == 7):
 		DialogueManager.dia(14)
+	
+	
+	soul_day_before = soul
 
 
 func get_money():
@@ -139,6 +157,8 @@ func set_money(x):
 			DialogueManager.dia(7)
 		if (times_zeroed == 5):
 			get_tree().quit()
+	
+	# 10 million dollars win state
 	if (money >= 10000000):
 		DialogueManager.dia(6)
 
@@ -149,6 +169,7 @@ func set_balls(x):
 
 
 func set_soul(x):
+	soul_day_before = soul
 	soul = x
 	$Soul.frame = soul - 1
 
