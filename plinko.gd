@@ -7,6 +7,7 @@ var DEBUG_MODE = false
 @onready var Ball = $Ball
 @onready var Bubble = $Bubble
 @onready var DialogueManager = $DialogueManager
+@onready var Man = $Man/Man
 
 var money = 5.32
 var balls = 1
