@@ -1,21 +1,23 @@
 extends Node2D
 
-const DEBUG_MODE = false
+const DEBUG_MODE = true
 
 @onready var Peg = $Peg
 @onready var Bucket = $Bucket
 @onready var Ball = $Ball
 @onready var Bubble = $Bubble
-@onready var DialougeManager = $DialougeManager
+@onready var DialogueManager = $DialogueManager
 
-var money
+var money = 5.32
 var balls = 1
 var day = 1
 var soul = 4
 
-var money_before
+var money_before = money
 
 var times_zeroed = 0
+var times_lose_sequential = 0
+var soul_day_before = soul
 
 var ball_array = []
 
@@ -23,8 +25,8 @@ var music_mute = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	DialougeManager.set_bubble(Bubble)
-	DialougeManager.dia(0)
+	DialogueManager.set_bubble(Bubble)
+	DialogueManager.dia(0)
 	money = 5.32
 	balls = 1
 	set_soul(4)
@@ -66,7 +68,7 @@ func _process(delta: float) -> void:
 	
 	# Dialogue Debug
 	if (Input.is_action_just_pressed("space") && DEBUG_MODE):
-		$DialougeManager.test(15)
+		$DialogueManager.test(15)
 
 
 func _on_next_day_pressed() -> void:
@@ -80,6 +82,36 @@ func new_day():
 	for i in ball_array:
 		remove_child(i)
 	ball_array.clear()
+	
+	soul_day_before = soul
+	print(soul_day_before)
+	
+	
+	if (money < money_before):
+		times_lose_sequential += 1
+	else:
+		times_lose_sequential = 0
+	
+	if (soul == 4 && money_before > money && money > money_before * 2):
+		# wins day, max soul, earnings between 1x and 2x
+		DialogueManager.dia(2)
+	elif (soul == 4 && money > money_before * 2):
+		# wins day, max soul, earnings above 2x
+		DialogueManager.dia(8)
+	elif (money > money_before):
+		# win, no other conditions
+		DialogueManager.dia(11)
+	
+	if (soul == 4 && times_lose_sequential == 3):
+		# max soul, 3 loss in row
+		DialogueManager.dia(9)
+	elif (money < money_before):
+		# loses, no other conditions
+		DialogueManager.dia(10)
+	
+	
+	if (day == 7):
+		DialogueManager.dia(14)
 
 
 func get_money():
@@ -98,17 +130,17 @@ func set_money(x):
 		
 		times_zeroed += 1
 		if (times_zeroed == 1):
-			DialougeManager.dia(3)
+			DialogueManager.dia(3)
 		if (times_zeroed == 2):
-			DialougeManager.dia(4)
+			DialogueManager.dia(4)
 		if (times_zeroed == 3):
-			DialougeManager.dia(5)
+			DialogueManager.dia(5)
 		if (times_zeroed == 4):
-			DialougeManager.dia(7)
+			DialogueManager.dia(7)
 		if (times_zeroed == 5):
 			get_tree().quit()
 	if (money >= 10000000):
-		DialougeManager.dia(6)
+		DialogueManager.dia(6)
 
 
 func set_balls(x):

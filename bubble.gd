@@ -15,7 +15,6 @@ func _process(delta):
 
 
 func set_i(i):
-	print("bubble.gd: setting i to ", i)
 	index = i
 
 
@@ -24,7 +23,6 @@ func get_i():
 
 
 func say(text, audio, i):
-	print("bubble.gd: index is ", i)
 	set_i(i)
 	$Music.stream_paused = true
 	visible = true
@@ -35,11 +33,11 @@ func say(text, audio, i):
 
 func _on_audio_stream_player_2d_finished() -> void:
 	set_i(get_i() + 0.1)
-	get_tree().current_scene.DialougeManager.dia(get_i())
+	get_tree().current_scene.DialogueManager.dia(get_i())
 
 
 func stop_audio():
-	$Dialouge.playing = false
+	$Dialogue.playing = false
 
 
 func exit():

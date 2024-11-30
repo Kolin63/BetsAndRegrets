@@ -10,7 +10,6 @@ func test(index = 0):
 	if (index > test_index):
 		test_index = index
 	
-	print("dialogue_manager: ", test_index)
 	dia(test_index)
 	
 	test_index += 1
@@ -21,7 +20,6 @@ func set_bubble(b):
 
 
 func dia(index):
-	print("dia called, index ", index)
 	# intro
 	if (index == 0):
 		Bubble.say("You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant...", 
@@ -121,9 +119,15 @@ func dia(index):
 	
 	# When he loses and no other conditions are met
 	elif (index == 10):
-		Bubble.say("%*$@!",
-		load("res://counterspellVoEdit/-curse-.wav"),
-		index)
+		var rand = randi_range(0, 1)
+		if (rand == 0):
+			Bubble.say("%*$@!",
+			load("res://counterspellVoEdit/-curse-.wav"),
+			index)
+		elif (rand == 1):
+			Bubble.say("How am I supposed to get 10 MILLION DOLLARS?",
+			load("res://counterspellVoEdit/10M.wav"),
+			index)
 	
 	# after he wins and no other conditions are met
 	elif (index == 11):
@@ -136,12 +140,6 @@ func dia(index):
 			Bubble.say("Finally!",
 			load("res://counterspellVoEdit/Finally.wav"),
 			index)
-	
-	# When he loses and no other conditions are met
-	elif (index == 13):
-		Bubble.say("How am I supposed to get 10 MILLION DOLLARS?",
-		load("res://counterspellVoEdit/10M.wav"),
-		index)
 	
 	# When day 7 starts
 	elif (index == 14):

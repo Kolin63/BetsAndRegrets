@@ -360,7 +360,7 @@ scale = Vector2(4.73684, 4.73684)
 stream = ExtResource("27_6umug")
 volume_db = -10.511
 
-[node name="DialougeManager" type="Node" parent="."]
+[node name="DialogueManager" type="Node" parent="."]
 script = ExtResource("26_oeq1l")
 
 [connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
