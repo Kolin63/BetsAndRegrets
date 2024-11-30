@@ -89,7 +89,7 @@ func new_day():
 	else:
 		times_lose_sequential = 0
 	
-	if (money_before == 0):
+	if (money == 0):
 		pass
 	elif (soul == 4 && money_before > money && money > money_before * 5 && !Bubble.Dialogue.playing):
 		# wins day, max soul, earnings between 1x and 5x
@@ -110,7 +110,9 @@ func new_day():
 		# win, no other conditions
 		DialogueManager.dia(11)
 	
-	if (soul == 4 && times_lose_sequential == 3):
+	if (money == 0):
+		pass
+	elif (soul == 4 && times_lose_sequential == 3):
 		# max soul, 3 loss in row
 		DialogueManager.dia(9)
 	elif (soul_day_before == 2 && money < money_before):
@@ -126,13 +128,13 @@ func new_day():
 		# loses, no other conditions
 		DialogueManager.dia(10)
 	
-	if (times_zeroed == 1 && money_before == 0):
+	if (times_zeroed == 1 && money == 0):
 		DialogueManager.dia(3)
-	if (times_zeroed == 2 && money_before == 0):
+	if (times_zeroed == 2 && money == 0):
 		DialogueManager.dia(4)
-	if (times_zeroed == 3 && money_before == 0):
+	if (times_zeroed == 3 && money == 0):
 		DialogueManager.dia(5)
-	if (times_zeroed == 4 && money_before == 0):
+	if (times_zeroed == 4 && money == 0):
 		DialogueManager.dia(7)
 	
 	if (day == 7 && money_before != 0 && !Bubble.Dialogue.playing):
@@ -153,9 +155,12 @@ func set_money(x, mux = -1):
 	if (money == 0 && mux != 0):
 		set_money(0.01)
 	if (money == 0):
-		set_soul(soul - 1)
 		set_balls(0)
-		set_money(money_before * 0.1 + 0.01)
+		
+		# remove all non-used balls
+		for i in ball_array:
+			if (i.editor_description == "ball"):
+				remove_child(i)
 		
 		times_zeroed += 1
 	
@@ -176,6 +181,28 @@ func set_soul(x):
 	$Soul/CollisionShape2D.shape.radius = 21 * soul
 	if (soul <= 0):
 		$Soul.visible = false
+
+
+func remove_soul(timpani = false):
+	if (timpani):
+		$Bubble/Music.stream = load("res://sfx/Timpani.wav")
+		$Bubble/Music.play()
+		for i in range(0, 600):
+			$Soul.scale += Vector2(0.001, 0.001)
+			$Soul.rotation += 0.1
+			await get_tree().create_timer(0.001).timeout
+	
+	if (soul == 1):
+		$Bubble/Music.stream = load("res://sfx/Soul Zero.wav")
+	else:
+		$Bubble/Music.stream = load("res://sfx/Soul Loss.wav")
+	
+	$Bubble/Music.play()
+	$Soul.scale = Vector2(1, 1)
+	$Soul.rotation = 0
+	set_soul(soul - 1)
+	set_money(money_before / 10)
+	await get_tree().create_timer(5).timeout
 
 
 # Calculates total amount of pegs

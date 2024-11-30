@@ -23,6 +23,10 @@ func set_volume(db):
 	Bubble.Dialogue.volume_db = db
 
 
+func set_music_volume(db):
+	Bubble.Music.volume_db = db
+
+
 # Test dialogue, starting at specific line
 # Only for debugging purposes
 var test_index = 0
@@ -67,6 +71,7 @@ func next_dia():
 # This is the one that runs it
 func do_dia(index):
 	set_volume(0)
+	set_music_volume(0)
 	
 	# intro
 	if (index == 0):
@@ -105,13 +110,17 @@ func do_dia(index):
 		index,
 		)
 		set_man("miserable")
-	elif (index == 3.1 + 0.1):
+	elif (index == 3.2):
 		Bubble.say("Alright, fine, but when your soul becomes mine, you become mine. Hahahaha...",
 		load("res://counterspellVoEdit/You become mine .wav"), 
 		index,
 		)
 		set_man("devil_talk")
-	elif (index == 3.1 + 0.1 + 0.1):
+	elif (index == 3.2 + 0.1):
+		set_man("devil_normal")
+		set_music_volume(13)
+		await get_parent().remove_soul(true)
+	elif (index == 3.2 + 0.1 + 0.1):
 		Bubble.say("At least I'm not back where I started...",
 		load("res://counterspellVoEdit/Back to start.wav"),
 		index,
@@ -126,6 +135,10 @@ func do_dia(index):
 		load("res://music/Dnd is satanic.mp3"))
 		set_man("devil_talk")
 	elif (index == 4.1):
+		set_man("devil_normal")
+		set_music_volume(13)
+		await get_parent().remove_soul()
+	elif (index == 4.2):
 		Bubble.say("I've really got to start being more careful with this...",
 		load("res://counterspellVoEdit/Gotta be more careful .wav"), 
 		index,
@@ -140,6 +153,10 @@ func do_dia(index):
 		load("res://music/Dnd is satanic.mp3"))
 		set_man("devil_talk")
 	elif (index == 5.1):
+		set_man("devil_normal")
+		set_music_volume(13)
+		await get_parent().remove_soul()
+	elif (index == 5.1 + 0.1):
 		Bubble.say("N-no... I've really got to be more careful. I need to get back to my family",
 		load("res://counterspellVoEdit/No, gotta be more careful .wav"), 
 		index,
@@ -178,15 +195,18 @@ func do_dia(index):
 		index,
 		load("res://music/Soulless.mp3"))
 		set_man("hide")
-		
-	# fades out as he becomes the devil's servant, game over screen
 	elif (index == 7.1):
+		set_man("devil_normal")
+		set_music_volume(13)
+		await get_parent().remove_soul(true)
+	# fades out as he becomes the devil's servant, game over screen
+	elif (index == 7.1 + 0.1):
 		Bubble.say("No... No. NOOOOO!!!",
 		load("res://counterspellVoEdit/No!!!.wav"),
 		index,
 		)
 		set_man("dead")
-	elif (index == 7.1 + 0.1):
+	elif (index == 7.1 + 0.1 + 0.1):
 		get_tree().change_scene_to_file("res://lose.tscn")
 	
 	# when he wins a day, has max souls, earnings are above 2x exclusive
