@@ -1,6 +1,6 @@
 extends Node2D
 
-const DEBUG_MODE = false
+const DEBUG_MODE = true
 
 @onready var Peg = $Peg
 @onready var Bucket = $Bucket
@@ -84,15 +84,16 @@ func new_day():
 	ball_array.clear()
 	
 	
+	# Handle Dialogue
 	if (money < money_before):
 		times_lose_sequential += 1
 	else:
 		times_lose_sequential = 0
 	
-	if (soul == 4 && money_before > money && money > money_before * 5):
+	if (soul == 4 && money_before > money && money > money_before * 5 && !Bubble.Dialogue.playing):
 		# wins day, max soul, earnings between 1x and 5x
 		DialogueManager.dia(2)
-	elif (soul == 4 && money > money_before * 5):
+	elif (soul == 4 && money > money_before * 5 && !Bubble.Dialogue.playing):
 		# wins day, max soul, earnings above 5x
 		DialogueManager.dia(8)
 	elif (soul_day_before == 2 && money > money_before):
@@ -104,7 +105,7 @@ func new_day():
 	elif (money > money_before && money > 9000000):
 		# win day, money > 9 mil (IM SO CLOSE!!! 🥵)
 		DialogueManager.dia(18)
-	elif (money > money_before):
+	elif (money > money_before && !Bubble.Dialogue.playing):
 		# win, no other conditions
 		DialogueManager.dia(11)
 	
@@ -120,7 +121,7 @@ func new_day():
 	elif (money_before > 9000000 && money < 9000000):
 		# lose, goes under 9 mil
 		DialogueManager.dia(19)
-	elif (money < money_before):
+	elif (money < money_before && !Bubble.Dialogue.playing):
 		# loses, no other conditions
 		DialogueManager.dia(10)
 	

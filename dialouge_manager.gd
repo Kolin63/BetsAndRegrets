@@ -1,6 +1,13 @@
 extends Node
 
-@onready var Bubble = get_parent().Bubble
+var Bubble
+
+var dialogue_queue = []
+
+
+func _process(delta):
+	if (dialogue_queue.size() != 0 && !Bubble.Dialogue.playing):
+		next_dia()
 
 
 # Test dialogue, starting at specific line
@@ -19,7 +26,38 @@ func set_bubble(b):
 	Bubble = b
 
 
+# This only QUEUES the index, it doesn't actually run it
 func dia(index):
+	dialogue_queue.append(index)
+	
+	if (!Bubble.Dialogue.playing):
+		next_dia()
+	
+	print("dia complete ", dialogue_queue)
+
+# Shift queue, overriding 1st element
+func shift_dia():
+	for i in range(1, dialogue_queue.size()):
+		dialogue_queue[i - 1] = dialogue_queue[i]
+	dialogue_queue.remove_at(dialogue_queue.size() - 1)
+
+
+# This calls the 1st element, clears it, and shifts all elements
+func next_dia():
+	print("\nnext dia start ", dialogue_queue)
+	# Calls 1st element
+	if (dialogue_queue.size() == 0):
+		Bubble.exit()
+		return
+	do_dia(dialogue_queue[0])
+	
+	shift_dia()
+	
+	print("next dia complete ", dialogue_queue)
+
+
+# This is the one that runs it
+func do_dia(index):
 	# intro
 	if (index == 0):
 		Bubble.say("You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant...", 
@@ -202,4 +240,9 @@ func dia(index):
 		index)
 	
 	else:
+		print("1st element not valid, else")
 		Bubble.exit()
+		return
+	
+	dialogue_queue.append(float(index) + 0.1)
+	print("queuing ", dialogue_queue[dialogue_queue.size()-1], ", ", dialogue_queue)

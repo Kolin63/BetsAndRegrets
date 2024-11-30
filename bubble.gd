@@ -1,8 +1,9 @@
 extends Sprite2D
 
 @onready var Music = $Music
+@onready var Dialogue = $Dialogue
 
-var index = -1.0
+#var index = -1.0
 
 func _ready():
 	visible = false
@@ -11,19 +12,20 @@ func _ready():
 func _process(delta):
 	if (Input.is_action_just_pressed("right click") && $Dialogue.playing):
 		$Dialogue.playing = false
-		_on_audio_stream_player_2d_finished()
+		#_on_audio_stream_player_2d_finished()
+		get_parent().DialogueManager.next_dia()
 
 
-func set_i(i):
-	index = i
+#func set_i(i):
+	#index = i
 
 
-func get_i():
-	return index
+#func get_i():
+	#return index
 
 
 func say(text, audio, i):
-	set_i(i)
+	#set_i(i)
 	$Music.stream_paused = true
 	visible = true
 	$Speech.text = text
@@ -32,8 +34,7 @@ func say(text, audio, i):
 	$Dialogue.play()
 
 func _on_audio_stream_player_2d_finished() -> void:
-	set_i(get_i() + 0.1)
-	get_tree().current_scene.DialogueManager.dia(get_i())
+	get_parent().DialogueManager.next_dia()
 
 
 func stop_audio():
