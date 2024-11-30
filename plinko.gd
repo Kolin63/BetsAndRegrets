@@ -91,7 +91,9 @@ func new_day():
 	else:
 		times_lose_sequential = 0
 	
-	if (soul == 4 && money_before > money && money > money_before * 5 && !Bubble.Dialogue.playing):
+	if (money_before == 0):
+		pass
+	elif (soul == 4 && money_before > money && money > money_before * 5 && !Bubble.Dialogue.playing):
 		# wins day, max soul, earnings between 1x and 5x
 		DialogueManager.dia(2)
 	elif (soul == 4 && money > money_before * 5 && !Bubble.Dialogue.playing):
@@ -153,6 +155,7 @@ func set_money(x):
 	if (money == 0):
 		set_soul(soul - 1)
 		set_balls(0)
+		set_money(money_before * 0.1 + 0.01)
 		
 		times_zeroed += 1
 		
