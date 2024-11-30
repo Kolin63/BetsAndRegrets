@@ -19,7 +19,8 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	if (body.editor_description != "ball"):
 		return
 	
-	body.freeze = true
+	body.editor_description = "used ball"
+	print(body.editor_description)
 	
 	if (multiplier == 0):
 		Plinko.money_before = Plinko.money
