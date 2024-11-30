@@ -20,7 +20,6 @@ func _on_detection_body_entered(body: Node2D) -> void:
 		return
 	
 	body.editor_description = "used ball"
-	print(body.editor_description)
 	
 	if (multiplier == 0):
 		Plinko.money_before = Plinko.money

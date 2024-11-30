@@ -1,6 +1,6 @@
 extends Node2D
 
-const DEBUG_MODE = true
+var DEBUG_MODE = false
 
 @onready var Peg = $Peg
 @onready var Bucket = $Bucket
@@ -67,8 +67,9 @@ func _process(delta: float) -> void:
 	
 	
 	# Dialogue Debug
-	if (Input.is_action_just_pressed("space") && DEBUG_MODE):
-		$DialogueManager.test(15)
+	if (Input.is_action_just_pressed("space") && !DEBUG_MODE):
+		DEBUG_MODE = true
+		$Debug.visible = true
 
 
 func _on_next_day_pressed() -> void:

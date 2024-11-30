@@ -281,6 +281,14 @@ theme_override_font_sizes/font_size = 150
 text = "Day 1"
 horizontal_alignment = 2
 
+[node name="Debug" type="Label" parent="."]
+visible = false
+offset_left = 237.0
+offset_right = 991.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 100
+text = "DEBUG MODE"
+
 [node name="BallPreview" type="Sprite2D" parent="."]
 modulate = Color(0.521141, 0.521141, 0.521141, 1)
 position = Vector2(-157, -119)
