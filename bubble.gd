@@ -43,5 +43,7 @@ func stop_audio():
 func exit():
 	visible = false
 	$Music.stream_paused = false
-	$Music.stream = load("res://The Devil Plays Plinko.mp3")
-	if ($Music.playing == false): $Music.play()
+	if ($Music.stream != load("res://music/The Devil Plays Plinko.mp3")):
+		$Music.stream = load("res://music/The Devil Plays Plinko.mp3")
+	if ($Music.playing == false): 
+		$Music.play()

@@ -28,7 +28,7 @@
 [ext_resource type="Script" path="res://Speech.gd" id="26_2riiv"]
 [ext_resource type="Script" path="res://bubble.gd" id="26_ak4gw"]
 [ext_resource type="Script" path="res://dialouge_manager.gd" id="26_oeq1l"]
-[ext_resource type="AudioStream" uid="uid://dgbjuhc37curm" path="res://The Devil Plays Plinko.mp3" id="27_6umug"]
+[ext_resource type="AudioStream" uid="uid://c7m3dt18if0kt" path="res://music/The Devil Plays Plinko.mp3" id="28_5g33r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
 
@@ -369,7 +369,7 @@ panning_strength = 0.0
 [node name="Music" type="AudioStreamPlayer2D" parent="Bubble"]
 position = Vector2(-3249.47, -1245.79)
 scale = Vector2(4.73684, 4.73684)
-stream = ExtResource("27_6umug")
+stream = ExtResource("28_5g33r")
 volume_db = -10.511
 
 [node name="DialogueManager" type="Node" parent="."]
