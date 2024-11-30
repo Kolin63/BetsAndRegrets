@@ -64,5 +64,3 @@ func scroll():
 	
 	var scroll = $Dialogue.get_playback_position() * ratio - 10
 	$Speech.set_v_scroll(scroll)
-	$Label.text = str(scroll)
-
