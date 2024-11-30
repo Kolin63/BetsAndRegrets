@@ -3,13 +3,13 @@
 ## Hayden (25 lines)
 ```
 00.1 Well, I guess I better make some cash. (At the start)
-02.0 What is this? Only  (when he wins a day, he has max souls, the earnings are between 1x and 2x)
-08.0 I guess it's something (when he wins a day, has max souls, earnings are above 2x exclusive)
+02.0 What is this? Only  (when he wins a day, he has max souls, the earnings are between 1x and 5x)
+08.0 I guess it's something (when he wins a day, has max souls, earnings are above 5x exclusive)
 09.0 This game is rigged! (after he loses 3 times in a row, he has max souls)
-10.0 %*$@! (When he loses and no other conditions are met)
+10.0 %*$@!                                            (When he loses and no other conditions are met)
+     How am I supposed to get **10 MILLION** DOLLARS?
 11.0 I won!   (after he wins and no other conditions are met)
      Finally! 
-13.0 How am I supposed to get **10 MILLION** DOLLARS? (When he loses and no other conditions are met)
 14.0 C'mon lucky 7! (When day 7 starts)
 07.1 No... No. NOOOOO!!! (fades out as he becomes the devil's servant, game over screen)
 03.1 N-no, please give me another chance. I... I'll give you a fourth of my soul, just please, give me another chance! (When you lose your first soul)
@@ -55,7 +55,7 @@
      If you lose too much, you'll be the devil's indentured servant...
 00.1 Well, I guess I better make some cash. (At the start)
 
-02.0 What is this? Only  (when he wins a day, he has max souls, the earnings are between 1x and 2x)
+02.0 What is this? Only  (when he wins a day, he has max souls, the earnings are between 1x and 5x)
 
 03.0 Devil: You ran out of money, game's over buddy... (When you lose the soul for the 1st time)
 03.1 N-no, please give me another chance. I... I'll give you a fourth of my soul, just please, give me another chance! (When you lose your first soul)
@@ -75,16 +75,15 @@
 07.0 Narrator: After the man was imprisoned, his body laid lifeless. He hadn't learned his lesson about being his own worst enemy. He served the devil for the rest of eternity. (After he loses)
 07.1 No... No. NOOOOO!!! (fades out as he becomes the devil's servant, game over screen)
 
-08.0 I guess it's something (when he wins a day, has max souls, earnings are above 2x exclusive)
+08.0 I guess it's something (when he wins a day, has max souls, earnings are above 5x exclusive)
 
 09.0 This game is rigged! (after he loses 3 times in a row, he has max souls)
 
-10.0 %*$@! (When he loses and no other conditions are met)
+10.0 %*$@!                                            (When he loses and no other conditions are met)
+     How am I supposed to get **10 MILLION** DOLLARS?
 
 11.0 I won!   (after he wins and no other conditions are met)
      Finally!
-
-13.0 How am I supposed to get **10 MILLION** DOLLARS? (When he loses and no other conditions are met)
 
 14.0 C'mon lucky 7! (When day 7 starts)
 
