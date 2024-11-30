@@ -37,6 +37,7 @@ text = "Play Again"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_3oipj")
 autoplay = true
+panning_strength = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(909, 467)
