@@ -138,7 +138,7 @@ func new_day():
 	if (times_zeroed == 4):
 		DialogueManager.dia(7)
 	
-	if (day == 7):
+	if (day == 7 && money_before != 0 && !Bubble.Dialogue.playing):
 		DialogueManager.dia(14)
 	
 	
