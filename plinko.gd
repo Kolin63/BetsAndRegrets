@@ -125,6 +125,14 @@ func new_day():
 		# loses, no other conditions
 		DialogueManager.dia(10)
 	
+	if (times_zeroed == 1):
+		DialogueManager.dia(3)
+	if (times_zeroed == 2):
+		DialogueManager.dia(4)
+	if (times_zeroed == 3):
+		DialogueManager.dia(5)
+	if (times_zeroed == 4):
+		DialogueManager.dia(7)
 	
 	if (day == 7):
 		DialogueManager.dia(14)
@@ -143,21 +151,10 @@ func set_money(x):
 	$Money.text = "$" + str(money)
 	if (money == 0):
 		set_soul(soul - 1)
-		new_day()
-		set_balls(day)
-		set_money(money * 0.1 + 0.01)
+		set_balls(0)
 		
 		times_zeroed += 1
-		if (times_zeroed == 1):
-			DialogueManager.dia(3)
-		if (times_zeroed == 2):
-			DialogueManager.dia(4)
-		if (times_zeroed == 3):
-			DialogueManager.dia(5)
-		if (times_zeroed == 4):
-			DialogueManager.dia(7)
-		if (times_zeroed == 5):
-			get_tree().quit()
+		
 	
 	# 10 million dollars win state
 	if (money >= 10000000):

@@ -20,4 +20,7 @@ func _on_detection_body_entered(body: Node2D) -> void:
 		return
 	
 	body.freeze = true
+	
+	if (multiplier == 0):
+		Plinko.money_before = Plinko.money
 	Plinko.set_money(Plinko.get_money() * multiplier)
