@@ -77,7 +77,8 @@ func _on_next_day_pressed() -> void:
 func new_day():
 	day += 1
 	$DayCount.text = "Day " + str(day)
-	set_balls(day)
+	if (money != 0):
+		set_balls(day)
 	for i in ball_array:
 		remove_child(i)
 	ball_array.clear()
@@ -202,6 +203,7 @@ func remove_soul(timpani = false):
 	$Soul.rotation = 0
 	set_soul(soul - 1)
 	set_money(money_before / 10)
+	set_balls(day)
 	await get_tree().create_timer(5).timeout
 
 
