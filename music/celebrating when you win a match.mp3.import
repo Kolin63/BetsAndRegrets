@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfk374cuv7ej0"
+path="res://.godot/imported/celebrating when you win a match.mp3-07a6f92bbb1a53dd0c79b7224bc7d07d.mp3str"
+
+[deps]
+
+source_file="res://music/celebrating when you win a match.mp3"
+dest_files=["res://.godot/imported/celebrating when you win a match.mp3-07a6f92bbb1a53dd0c79b7224bc7d07d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
