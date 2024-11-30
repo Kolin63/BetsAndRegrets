@@ -32,8 +32,6 @@ func dia(index):
 	
 	if (!Bubble.Dialogue.playing):
 		next_dia()
-	
-	print("dia complete ", dialogue_queue)
 
 # Shift queue, overriding 1st element
 func shift_dia():
@@ -44,7 +42,6 @@ func shift_dia():
 
 # This calls the 1st element, clears it, and shifts all elements
 func next_dia():
-	print("\nnext dia start ", dialogue_queue)
 	# Calls 1st element
 	if (dialogue_queue.size() == 0):
 		Bubble.exit()
@@ -52,8 +49,6 @@ func next_dia():
 	do_dia(dialogue_queue[0])
 	
 	shift_dia()
-	
-	print("next dia complete ", dialogue_queue)
 
 
 # This is the one that runs it
@@ -256,9 +251,7 @@ func do_dia(index):
 		index)
 	
 	else:
-		print("1st element not valid, else")
 		Bubble.exit()
 		return
 	
 	dialogue_queue.append(float(index) + 0.1)
-	print("queuing ", dialogue_queue[dialogue_queue.size()-1], ", ", dialogue_queue)
