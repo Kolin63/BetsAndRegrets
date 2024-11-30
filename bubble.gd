@@ -13,6 +13,9 @@ func _process(delta):
 		$Dialogue.playing = false
 		get_parent().DialogueManager.next_dia()
 	
+	if ($Dialogue.playing):
+		scroll()
+	
 	$RigidBody2D/CollisionShape2D.disabled = !visible
 
 
@@ -20,7 +23,6 @@ func say(text, audio, i, music = $Music.stream):
 	visible = true
 	
 	$Speech.text = text
-	$Speech.scroll()
 	
 	$Dialogue.stream = audio
 	$Dialogue.play()
@@ -49,3 +51,18 @@ func exit():
 		$Music.stream = load("res://music/The Devil Plays Plinko.mp3")
 	if ($Music.playing == false): 
 		$Music.play()
+
+
+func scroll():
+	var lines = $Speech.get_total_visible_line_count()
+	var line_height = $Speech.get_line_height()
+	
+	var audio_length = $Dialogue.stream.get_length()
+	
+	var ratio = lines / audio_length
+	
+	
+	var scroll = $Dialogue.get_playback_position() * ratio - 10
+	$Speech.set_v_scroll(scroll)
+	$Label.text = str(scroll)
+

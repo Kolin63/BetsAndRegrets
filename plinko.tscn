@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://du31jy3465by3"]
+[gd_scene load_steps=45 format=3 uid="uid://du31jy3465by3"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -25,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://sssv2k7f75po" path="res://HAAC_Art/PNGHACKTalkingClosed1.png" id="18_ue01e"]
 [ext_resource type="Texture2D" uid="uid://btsb05g0ym8m1" path="res://HAAC_Art/PNGHACKTalkingOpen1.png" id="19_5dvqr"]
 [ext_resource type="Texture2D" uid="uid://b46mokl42m4cv" path="res://HAAC_Art/PNGHACKThink1.png" id="20_fimgl"]
-[ext_resource type="Script" path="res://Speech.gd" id="26_2riiv"]
 [ext_resource type="Script" path="res://bubble.gd" id="26_ak4gw"]
 [ext_resource type="Script" path="res://dialouge_manager.gd" id="26_oeq1l"]
 [ext_resource type="AudioStream" uid="uid://c7m3dt18if0kt" path="res://music/The Devil Plays Plinko.mp3" id="28_5g33r"]
@@ -385,15 +384,22 @@ offset_left = -93.1499
 offset_top = 12.796
 offset_right = 40.0
 offset_bottom = 876.0
+mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("7_0267x")
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 180
 text = "You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant...
 "
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
 wrap_mode = 1
-scroll_smooth = true
-script = ExtResource("26_2riiv")
 
 [node name="Dialogue" type="AudioStreamPlayer2D" parent="Bubble"]
 position = Vector2(-3249.47, -1245.79)
