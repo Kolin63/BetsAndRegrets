@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://du31jy3465by3"]
+[gd_scene load_steps=47 format=3 uid="uid://du31jy3465by3"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cyjuxg36tkphq" path="res://HAAC_Art/PNGHACKDead1.png" id="10_aw83s"]
 [ext_resource type="Texture2D" uid="uid://7t7uyrusept3" path="res://HAAC_Art/PNGHACKHappy1.png" id="10_cqxkd"]
 [ext_resource type="Script" path="res://NextDay.gd" id="10_y3yn1"]
+[ext_resource type="Script" path="res://Man.gd" id="11_gdqmq"]
 [ext_resource type="Texture2D" uid="uid://jx04j3bhrfdc" path="res://HAAC_Art/PNGHACKDevilNormal.png" id="11_oatle"]
 [ext_resource type="Texture2D" uid="uid://d2q23uo3vl2lr" path="res://HACKSOUL1.png" id="11_tn2iv"]
 [ext_resource type="Texture2D" uid="uid://jf6turmn3icr" path="res://HACKSOUL2.png" id="12_al33d"]
@@ -360,6 +361,7 @@ shape = SubResource("CapsuleShape2D_yuq7t")
 [node name="Man" type="RigidBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_fbslg")
 freeze = true
+script = ExtResource("11_gdqmq")
 
 [node name="Man" type="AnimatedSprite2D" parent="Man"]
 position = Vector2(115, 548)
