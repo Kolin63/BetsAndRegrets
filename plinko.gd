@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 		var ball = Ball.duplicate()
 		ball.position = get_viewport().get_mouse_position()
 		if (!DEBUG_MODE):
-			ball.position.y = 25
+			ball.position.y = 125
 		ball.gravity_scale = 1
 		add_child(ball)
 		set_balls(balls - 1)
@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 	if (balls > 0):
 		$BallPreview.visible = true
 		$BallPreview.position = get_viewport().get_mouse_position()
-		$BallPreview.position.y = 25
+		$BallPreview.position.y = 125
 	else:
 		$BallPreview.visible = false
 	
@@ -179,7 +179,7 @@ func set_soul(x):
 	soul_day_before = soul
 	soul = x
 	$Soul/Soul.frame = soul - 1
-	$Soul/CollisionShape2D.shape.radius = 21 * soul
+	$Soul/CollisionShape2D.shape.radius = 30 * soul
 	if (soul <= 0):
 		$Soul.visible = false
 
@@ -275,11 +275,11 @@ func round_place(num,places):
 func generate(base_pegs):
 	# Declare some variables 
 	var viewport_size = get_viewport().get_visible_rect().size
-	const bottom_padding = 40
+	const bottom_padding = 100
 	const side_padding = 20
 	
 	# Wow that's a lot of variables!
-	const peg_size = 18
+	const peg_size = 18*1.5
 	const peg_padding = peg_size
 	
 	# Oh my gosh there are more variables!
