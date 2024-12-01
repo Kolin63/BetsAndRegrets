@@ -167,11 +167,7 @@ func set_money(x, mux = -1):
 	money_before = money
 	money = round_place(x, 2)
 	
-	$Money.text = "$" + str(money)
-	if (fmod(money, 1) == 0):
-		$Money.text += ".00"
-	elif (fmod(money*10, 1) == 0):
-		$Money.text += "0"
+	format_money_text()
 	
 	if (money == 0 && mux != 0):
 		set_money(0.01)
@@ -190,6 +186,14 @@ func set_money(x, mux = -1):
 		for i in ball_array:
 			remove_child(i)
 		set_balls(0)
+
+
+func format_money_text():
+	$Money.text = "$" + str(money)
+	if (fmod(money, 1) == 0):
+		$Money.text += ".00"
+	elif (fmod(money*10, 1) == 0):
+		$Money.text += "0"
 
 
 func set_balls(x):
