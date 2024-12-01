@@ -3,6 +3,9 @@ extends RigidBody2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (get_parent().day > 1):
+		$Guidance.visible = false
+	
 	var ball_array = get_parent().ball_array
 	var should_show = true
 	

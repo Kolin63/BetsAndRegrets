@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://du31jy3465by3"]
+[gd_scene load_steps=49 format=3 uid="uid://du31jy3465by3"]
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -363,7 +363,6 @@ position = Vector2(1683, 963)
 physics_material_override = SubResource("PhysicsMaterial_oa4ml")
 freeze = true
 script = ExtResource("10_y3yn1")
-metadata/_edit_group_ = true
 
 [node name="NextDay" type="TextureButton" parent="NextDay"]
 offset_left = -189.0
@@ -391,6 +390,20 @@ text = "Next Day"
 rotation = 1.5708
 scale = Vector2(0.08, 0.08)
 shape = SubResource("CapsuleShape2D_yuq7t")
+
+[node name="Guidance" type="Label" parent="NextDay"]
+offset_left = -378.0
+offset_top = -305.0
+offset_right = 170.0
+offset_bottom = -62.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 100
+text = "Click Next Day to get More Balls!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Man" type="RigidBody2D" parent="."]
 position = Vector2(98, 365)
