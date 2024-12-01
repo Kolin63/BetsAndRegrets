@@ -172,6 +172,11 @@ func set_money(x, mux = -1):
 				remove_child(i)
 		
 		times_zeroed += 1
+	
+	if (money >= 10000000):
+		for i in ball_array:
+			remove_child(i)
+		set_balls(0)
 
 
 func set_balls(x):
