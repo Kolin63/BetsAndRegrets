@@ -8,7 +8,7 @@ And besides, most gamblers quit before they win big, so naturally, you won't qui
 If you lose too much, you'll be the devil's indentured servant...
 
 ## Gameplay 🎮
-Every day, you can play Plinko once to try and get some money, just drop a ball or two and see where it leads you! Each day you play, you get an extra ball. For example, on day 1 you would have one ball but on day 7 you would have 7 balls to use! When you're done with that day, press the next day button to progress in the story!
+Every day, you can play Plinko once to try and get some money, just drop a ball or two and see where it leads you! Each day you play, you get an extra ball. For example, on day 1 you would have one ball but on day 7 you would have 7 balls to use! When you're done with that day, press the next day button to progress in the story! If you want to skip the dialogue, simply press right-click on your mouse.
 ![gameplay image](start.png)
 
 ## Installation / How to play 🔧
