@@ -132,6 +132,7 @@ func new_day():
 	if (times_zeroed == 3 && money == 0):
 		DialogueManager.dia(5)
 	if (times_zeroed == 4 && money == 0):
+		balls = -1
 		DialogueManager.dia(7)
 	
 	if (day == 7 && money_before != 0 && !Bubble.Dialogue.playing):
@@ -163,6 +164,7 @@ func set_money(x, mux = -1):
 	
 	# 10 million dollars win state
 	if (money >= 10000000):
+		balls = -1
 		DialogueManager.dia(6)
 
 
