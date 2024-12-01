@@ -3,6 +3,7 @@ extends Node
 var Bubble
 
 var dialogue_queue = []
+var previous_dialogue = -1
 
 
 func _process(delta):
@@ -59,7 +60,6 @@ func shift_dia():
 
 # This calls the 1st element, clears it, and shifts all elements
 func next_dia():
-	# Calls 1st element
 	if (dialogue_queue.size() == 0):
 		Bubble.exit()
 		return
@@ -73,8 +73,14 @@ func do_dia(index):
 	set_volume(0)
 	set_music_volume(0)
 	
+	# Prevents Sequential Dialogue 
+	if (index == previous_dialogue):
+		Bubble.exit()
+		set_man("think")
+		return
+	
 	# intro
-	if (index == 0):
+	elif (index == 0):
 		Bubble.say("You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant...", 
 		load("res://counterspellVoEdit/Counterspell Intro .wav"), 
 		index,
@@ -328,3 +334,4 @@ func do_dia(index):
 		return
 	
 	dialogue_queue.append(float(index) + 0.1)
+	previous_dialogue = index
