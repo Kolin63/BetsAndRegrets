@@ -134,10 +134,13 @@ func new_day():
 		DialogueManager.dia(10)
 	
 	if (times_zeroed == 1 && money == 0):
+		balls = -1
 		DialogueManager.dia(3)
 	if (times_zeroed == 2 && money == 0):
+		balls = -1
 		DialogueManager.dia(4)
 	if (times_zeroed == 3 && money == 0):
+		balls = -1
 		DialogueManager.dia(5)
 	if (times_zeroed == 4 && money == 0):
 		balls = -1
