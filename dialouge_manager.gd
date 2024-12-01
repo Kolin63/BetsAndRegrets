@@ -144,7 +144,7 @@ func do_dia(index):
 		set_man("devil_normal")
 		set_music_volume(13)
 		await get_parent().remove_soul()
-	elif (index == 4.2):
+	elif (index == 4.1 + 0.1):
 		Bubble.say("I've really got to start being more careful with this...",
 		load("res://counterspellVoEdit/Gotta be more careful .wav"), 
 		index,
