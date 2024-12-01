@@ -194,6 +194,12 @@ func format_money_text():
 		$Money.text += ".00"
 	elif (fmod(money*10, 1) == 0):
 		$Money.text += "0"
+	
+	var string_length = $Money.text.length()
+	if (money >= 1000):
+		$Money.text = $Money.text.insert(string_length-6, ",")
+	if (money >= 1000000):
+		$Money.text = $Money.text.insert(string_length-9, ",")
 
 
 func set_balls(x):
