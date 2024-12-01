@@ -33,10 +33,6 @@ func _ready() -> void:
 	set_soul(4)
 	set_balls(day)
 	generate(18)
-	
-	if (DEBUG_MODE):
-		print("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ DEBUG MODE ACTIVATED ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️\n\t\tDisable it on Plinko.gd line 3\n")
-		$DayCount.text = "DEBUG MODE"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
