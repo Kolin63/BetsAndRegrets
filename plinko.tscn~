@@ -1,4 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://du31jy3465by3"]
+<<<<<<< Updated upstream
+[gd_scene load_steps=47 format=3 uid="uid://du31jy3465by3"]
+=======
+[gd_scene load_steps=49 format=3 uid="uid://du31jy3465by3"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://plinko.gd" id="1_hghkl"]
 [ext_resource type="Script" path="res://peg.gd" id="2_73qfo"]
@@ -435,6 +439,7 @@ freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble/RigidBody2D"]
 position = Vector2(-350.525, -265.264)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5q1cg")
 
 [node name="Soul" type="RigidBody2D" parent="."]

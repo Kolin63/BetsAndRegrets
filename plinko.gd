@@ -160,8 +160,9 @@ func set_money(x, mux = -1):
 		
 		# remove all non-used balls
 		for i in ball_array:
-			if (i.editor_description == "ball"):
+			if (i.editor_description != "used ball"):
 				remove_child(i)
+				i.editor_description = "used ball"
 		
 		times_zeroed += 1
 	
