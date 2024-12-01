@@ -9,7 +9,7 @@ If you lose too much, you'll be the devil's indentured servant...
 
 ## Gameplay 🎮
 Every day, you can play Plinko once to try and get some money, just drop a ball or two and see where it leads you! Each day you play, you get an extra ball. For example, on day 1 you would have one ball but on day 7 you would have 7 balls to use! When you're done with that day, press the next day button to progress in the story!
-![gameplay image](gameplay.png)
+![gameplay image](start.png)
 
 ## Installation / How to play 🔧
 You have two options:
@@ -46,3 +46,4 @@ Hayden was the artist in this group. He hand-drew every single visual element (o
 align with our vision for the game, and to help the story come to life. He was also the main voice actor, for both the intro
 and the main character. He is a 16 year old programmer who mainly uses Python, and also uses some Javascript.
 He primarily studies Medical at Bergen County Academies, so he programs on the side.
+Feel free to contact him on Discord at `lehamger`
