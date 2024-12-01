@@ -80,6 +80,14 @@ func new_day():
 	ball_array.clear()
 	
 	
+	# 10 million dollars win state
+	if (money >= 10000000):
+		set_balls(0)
+		balls = -1
+		DialogueManager.dia(6)
+		return
+	
+	
 	# Handle Dialogue
 	if (money < money_before):
 		times_lose_sequential += 1
@@ -161,11 +169,6 @@ func set_money(x, mux = -1):
 				remove_child(i)
 		
 		times_zeroed += 1
-	
-	# 10 million dollars win state
-	if (money >= 10000000):
-		balls = -1
-		DialogueManager.dia(6)
 
 
 func set_balls(x):
@@ -200,8 +203,9 @@ func remove_soul(timpani = false):
 	$Soul.scale = Vector2(1, 1)
 	$Soul.rotation = 0
 	set_soul(soul - 1)
-	set_money(money_before / 10)
-	set_balls(day)
+	if (soul != 0):
+		set_money(money_before / 10)
+		set_balls(day)
 	await get_tree().create_timer(5).timeout
 
 
