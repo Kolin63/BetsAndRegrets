@@ -31,6 +31,9 @@ func slide_animation():
 			position.x += 10
 		if ($Man.animation == "open"):
 			$Man.animation = "think"
+	
+	if ($HeadDropTimer.paused):
+		$Man.position = default_pos
 
 
 func _on_head_drop_check_body_entered(body):

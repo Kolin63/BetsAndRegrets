@@ -391,7 +391,7 @@ scale = Vector2(0.08, 0.08)
 shape = SubResource("CapsuleShape2D_yuq7t")
 
 [node name="Man" type="RigidBody2D" parent="."]
-position = Vector2(-300, 365)
+position = Vector2(98, 365)
 physics_material_override = SubResource("PhysicsMaterial_fbslg")
 freeze = true
 script = ExtResource("11_gdqmq")
