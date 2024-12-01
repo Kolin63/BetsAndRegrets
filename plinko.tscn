@@ -324,11 +324,26 @@ theme_override_font_sizes/font_size = 100
 text = "DEBUG MODE"
 
 [node name="BallPreview" type="Sprite2D" parent="."]
-modulate = Color(0.521141, 0.521141, 0.521141, 1)
-position = Vector2(-157, -119)
-scale = Vector2(0.13, 0.13)
+self_modulate = Color(0.521569, 0.521569, 0.521569, 1)
+position = Vector2(-46, -351)
+scale = Vector2(0.165, 0.165)
 texture = ExtResource("2_dre8r")
 offset = Vector2(300, 130)
+
+[node name="Label" type="Label" parent="BallPreview"]
+offset_left = 145.455
+offset_top = -412.121
+offset_right = 2327.45
+offset_bottom = 394.879
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("7_0267x")
+theme_override_font_sizes/font_size = 400
+text = "Click to Drop!"
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="NextDay" type="RigidBody2D" parent="."]
 position = Vector2(1683, 963)

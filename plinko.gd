@@ -33,6 +33,8 @@ func _ready() -> void:
 	set_soul(4)
 	set_balls(day)
 	generate(18)
+	
+	$BallPreview/Label.text = "Click to Drop!"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,6 +81,10 @@ func new_day():
 		remove_child(i)
 	ball_array.clear()
 	
+	if (day == 2):
+		$BallPreview/Label.text = "You can drop multiple at a time"
+	else:
+		$BallPreview/Label.visible = false
 	
 	# 10 million dollars win state
 	if (money >= 10000000):
