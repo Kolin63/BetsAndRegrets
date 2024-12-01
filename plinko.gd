@@ -34,9 +34,7 @@ func _ready() -> void:
 	set_balls(day)
 	generate(18)
 	
-	if (DEBUG_MODE):
-		print("⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ DEBUG MODE ACTIVATED ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️\n\t\tDisable it on Plinko.gd line 3\n")
-		$DayCount.text = "DEBUG MODE"
+	$BallPreview/Label.text = "Click to Drop!"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -82,6 +80,18 @@ func new_day():
 	for i in ball_array:
 		remove_child(i)
 	ball_array.clear()
+	
+	if (day == 2):
+		$BallPreview/Label.text = "You can drop multiple at a time"
+	else:
+		$BallPreview/Label.visible = false
+	
+	# 10 million dollars win state
+	if (money >= 10000000):
+		set_balls(0)
+		balls = -1
+		DialogueManager.dia(6)
+		return
 	
 	
 	# Handle Dialogue
@@ -130,12 +140,16 @@ func new_day():
 		DialogueManager.dia(10)
 	
 	if (times_zeroed == 1 && money == 0):
+		balls = -1
 		DialogueManager.dia(3)
 	if (times_zeroed == 2 && money == 0):
+		balls = -1
 		DialogueManager.dia(4)
 	if (times_zeroed == 3 && money == 0):
+		balls = -1
 		DialogueManager.dia(5)
 	if (times_zeroed == 4 && money == 0):
+		balls = -1
 		DialogueManager.dia(7)
 	
 	if (day == 7 && money_before != 0 && !Bubble.Dialogue.playing):
@@ -166,9 +180,10 @@ func set_money(x, mux = -1):
 		
 		times_zeroed += 1
 	
-	# 10 million dollars win state
 	if (money >= 10000000):
-		DialogueManager.dia(6)
+		for i in ball_array:
+			remove_child(i)
+		set_balls(0)
 
 
 func set_balls(x):
@@ -203,8 +218,9 @@ func remove_soul(timpani = false):
 	$Soul.scale = Vector2(1, 1)
 	$Soul.rotation = 0
 	set_soul(soul - 1)
-	set_money(money_before / 10)
-	set_balls(day)
+	if (soul != 0):
+		set_money(money_before / 10)
+		set_balls(day)
 	await get_tree().create_timer(5).timeout
 
 
