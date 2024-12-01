@@ -166,7 +166,13 @@ func get_money():
 func set_money(x, mux = -1):
 	money_before = money
 	money = round_place(x, 2)
+	
 	$Money.text = "$" + str(money)
+	if (fmod(money, 1) == 0):
+		$Money.text += ".00"
+	elif (fmod(money*10, 1) == 0):
+		$Money.text += "0"
+	
 	if (money == 0 && mux != 0):
 		set_money(0.01)
 	if (money == 0):
