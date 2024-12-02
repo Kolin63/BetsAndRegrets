@@ -38,7 +38,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Spawn Ball
 	if (Input.is_action_just_pressed("click") && balls > 0):
 		var ball = Ball.duplicate()
@@ -264,34 +264,34 @@ func get_rows(base_pegs):
 
 # Calculates middle of viewport, offset by half of sprite
 # size. So that the sprite is centered. 
-func get_middle_of_viewport_x(size_x, sprite_size = 0):
+func get_middle_of_viewport_x(size_x, sprite_size = 0.0):
 	# This finds the middle pixel
 	var middle = size_x / 2
 	# Now offset it by half the sprite size
 	# This way, if we set the sprite's position to
 	# middle, then the sprite will be centered
-	middle -= (sprite_size / 2)
+	middle -= sprite_size / 2.0
 	
 	return middle
 
 
 # Gets the x position of a given peg 
 func get_peg_position_x(pegs_in_row, peg_index, peg_size, peg_padding, middle):
-	var position = middle
+	var pos = middle
 	
 	# Offset if pegs in row is even
 	if (pegs_in_row % 2 == 0):
-		position += peg_size
+		pos += peg_size
 	
 	# First, set position to left most peg
 	for i in range(floor(pegs_in_row / 2), 0, -1):
-		position -= (peg_size + peg_padding)
+		pos -= (peg_size + peg_padding)
 	
 	# Now, set the position to the actual one
 	for i in range(1, peg_index):
-		position += peg_size + peg_padding
+		pos += peg_size + peg_padding
 	
-	return position 
+	return pos
 
 
 # Example: 
@@ -309,14 +309,12 @@ func generate(base_pegs):
 	# Declare some variables 
 	var viewport_size = get_viewport().get_visible_rect().size
 	const bottom_padding = 100
-	const side_padding = 20
 	
 	# Wow that's a lot of variables!
 	const peg_size = 18*1.5
 	const peg_padding = peg_size
 	
 	# Oh my gosh there are more variables!
-	var total_pegs = get_total_pegs(base_pegs)
 	var rows = get_rows(base_pegs)
 	var middle = get_middle_of_viewport_x(viewport_size.x, peg_size)
 	

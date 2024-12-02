@@ -27,7 +27,7 @@ func set_modifier(mod):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (multiplier == 0 && get_parent().is_intro):
 		set_modifier(0.1)
 	elif (multiplier == 0):

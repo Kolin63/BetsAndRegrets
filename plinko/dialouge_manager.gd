@@ -6,7 +6,7 @@ var dialogue_queue = []
 var previous_dialogue = -1
 
 
-func _process(delta):
+func _process(_delta):
 	if (dialogue_queue.size() != 0 && !Bubble.Dialogue.playing):
 		next_dia()
 
