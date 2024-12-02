@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BetsAndRegrets"
-run/main_scene="res://start.tscn"
+run/main_scene="res://transition_scenes/start.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,12 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[file_customization]
+
+folder_colors={
+"res://plinko/": "red"
+}
 
 [input]
 

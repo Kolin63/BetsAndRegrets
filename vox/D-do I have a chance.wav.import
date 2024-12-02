@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bdysi3edic4rc"
+path="res://.godot/imported/D-do I have a chance.wav-9acf0193a6c30de7b3a9d998e30736e1.sample"
+
+[deps]
+
+source_file="res://vox/D-do I have a chance.wav"
+dest_files=["res://.godot/imported/D-do I have a chance.wav-9acf0193a6c30de7b3a9d998e30736e1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

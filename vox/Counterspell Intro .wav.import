@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxuj15oy0bkwv"
+path="res://.godot/imported/Counterspell Intro .wav-be359ed0cd30bfa4c236918732f52893.sample"
+
+[deps]
+
+source_file="res://vox/Counterspell Intro .wav"
+dest_files=["res://.godot/imported/Counterspell Intro .wav-be359ed0cd30bfa4c236918732f52893.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
