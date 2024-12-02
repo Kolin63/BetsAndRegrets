@@ -15,6 +15,7 @@ config/description="95% of gamblers quit before they win big!"
 config/version="v2.0.0"
 run/main_scene="res://transition_scenes/start.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.png"
 
 [display]
