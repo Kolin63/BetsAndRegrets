@@ -8,7 +8,7 @@ func _ready():
 	visible = false
 
 
-func _process(delta):
+func _process(_delta):
 	if (Input.is_action_just_pressed("right click") && $Dialogue.playing):
 		$Dialogue.playing = false
 		get_parent().DialogueManager.next_dia()
@@ -19,7 +19,7 @@ func _process(delta):
 	$RigidBody2D/CollisionShape2D.disabled = !visible
 
 
-func say(text, audio, i, music = $Music.stream):
+func say(text, audio, _i, music = $Music.stream):
 	visible = true
 	
 	$Speech.text = text
@@ -60,12 +60,11 @@ func exit():
 
 func scroll():
 	var lines = $Speech.get_total_visible_line_count()
-	var line_height = $Speech.get_line_height()
 	
 	var audio_length = $Dialogue.stream.get_length()
 	
 	var ratio = lines / audio_length
 	
 	
-	var scroll = $Dialogue.get_playback_position() * ratio - 10
-	$Speech.set_v_scroll(scroll)
+	var v_scroll = $Dialogue.get_playback_position() * ratio - 10
+	$Speech.set_v_scroll(v_scroll)

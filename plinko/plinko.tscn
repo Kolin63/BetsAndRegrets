@@ -1,10 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://du31jy3465by3"]
+[gd_scene load_steps=48 format=3 uid="uid://du31jy3465by3"]
 
 [ext_resource type="Script" path="res://plinko/plinko.gd" id="1_ro1am"]
 [ext_resource type="Texture2D" uid="uid://gbow77wfi4gu" path="res://art/background.png" id="2_a6uo4"]
 [ext_resource type="Script" path="res://plinko/Ball.gd" id="3_o1j7s"]
 [ext_resource type="Texture2D" uid="uid://dvmg3d63bwrrs" path="res://art/ball.png" id="4_st38e"]
-[ext_resource type="Script" path="res://plinko/peg.gd" id="5_3xg0q"]
 [ext_resource type="Texture2D" uid="uid://ddbbho8f37w81" path="res://art/pin.png" id="6_q70nt"]
 [ext_resource type="Script" path="res://plinko/bucket.gd" id="7_hyxao"]
 [ext_resource type="Texture2D" uid="uid://b55accqbfi5a3" path="res://art/bucket.png" id="8_hiols"]
@@ -220,7 +219,6 @@ position = Vector2(-234, -207)
 physics_material_override = SubResource("PhysicsMaterial_jjg6k")
 gravity_scale = 0.0
 freeze = true
-script = ExtResource("5_3xg0q")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Peg"]
