@@ -12,7 +12,7 @@ config_version=5
 
 config/name="BetsAndRegrets"
 config/description="95% of gamblers quit before they win big!"
-config/version="v2.0.0"
+config/version="v2.0.1"
 run/main_scene="res://transition_scenes/start.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
