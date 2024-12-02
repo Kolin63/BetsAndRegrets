@@ -45,3 +45,4 @@ scale = Vector2(0.472222, 0.472222)
 texture = ExtResource("4_luju1")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

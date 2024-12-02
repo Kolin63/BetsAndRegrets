@@ -1,38 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8rdltypcieih"]
+[gd_scene load_steps=6 format=3 uid="uid://b8rdltypcieih"]
 
 [ext_resource type="Script" path="res://game_over.gd" id="1_wtgfn"]
 [ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://3XAY-Sans-Regular.ttf" id="2_fiv3b"]
+[ext_resource type="Texture2D" uid="uid://meox0kvis8l3" path="res://thumbnail.png" id="2_w0ap3"]
 [ext_resource type="Texture2D" uid="uid://btrgw1lltabp6" path="res://art/button.png" id="3_ncnia"]
-[ext_resource type="AudioStream" uid="uid://c7m3dt18if0kt" path="res://music/The Devil Plays Plinko.mp3" id="4_itdte"]
+[ext_resource type="AudioStream" uid="uid://bswvswtklb7uw" path="res://music/Dnd is satanic.mp3" id="5_4ff8d"]
 
 [node name="Start" type="Node2D"]
 script = ExtResource("1_wtgfn")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -18.0
-offset_top = -22.0
-offset_right = 1948.0
-offset_bottom = 1109.0
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 66.0
-offset_top = 227.0
-offset_right = 1884.0
-offset_bottom = 494.0
-theme_override_fonts/font = ExtResource("2_fiv3b")
-theme_override_font_sizes/font_size = 250
-text = "Bets and Regrets"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_w0ap3")
 
 [node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 573.0
-offset_top = 492.0
-offset_right = 4413.0
-offset_bottom = 2652.0
-scale = Vector2(0.175, 0.175)
+offset_left = 677.0
+offset_top = 826.0
+offset_right = 4517.0
+offset_bottom = 2986.0
+scale = Vector2(0.13, 0.13)
 texture_normal = ExtResource("3_ncnia")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="TextureButton"]
 layout_mode = 0
@@ -46,8 +34,9 @@ theme_override_font_sizes/font_size = 1000
 text = "Play"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_itdte")
+stream = ExtResource("5_4ff8d")
 autoplay = true
 panning_strength = 0.0
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
