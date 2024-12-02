@@ -220,10 +220,11 @@ func remove_soul(timpani = false):
 	if (timpani):
 		$Bubble/Music.stream = load("res://sfx/Timpani.wav")
 		$Bubble/Music.play()
-		for i in range(0, 600):
+		$Soul/Timer.start(7.7)
+		while ($Soul/Timer.is_stopped() == false):
 			$Soul.scale += Vector2(0.001, 0.001)
 			$Soul.rotation += 0.1
-			await get_tree().create_timer(0.001).timeout
+			await get_tree().create_timer(0.01).timeout
 	
 	if (soul == 1):
 		$Bubble/Music.stream = load("res://sfx/Soul Zero.wav")

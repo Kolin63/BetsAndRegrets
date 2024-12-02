@@ -302,6 +302,11 @@ sprite_frames = SubResource("SpriteFrames_rtaw0")
 frame = 2
 frame_progress = 0.266965
 
+[node name="Timer" type="Timer" parent="Soul"]
+process_callback = 0
+wait_time = 8.0
+one_shot = true
+
 [node name="Money" type="Label" parent="."]
 offset_left = 25.0
 offset_top = 28.0
