@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bm6xs3vpjnc5j"
+path="res://.godot/imported/Only have 1 shot left.wav-0260a95fc51c55f28947b20a26150fbb.sample"
+
+[deps]
+
+source_file="res://vox/Only have 1 shot left.wav"
+dest_files=["res://.godot/imported/Only have 1 shot left.wav-0260a95fc51c55f28947b20a26150fbb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

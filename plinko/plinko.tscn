@@ -1,0 +1,518 @@
+[gd_scene load_steps=49 format=3 uid="uid://du31jy3465by3"]
+
+[ext_resource type="Script" path="res://plinko/plinko.gd" id="1_ro1am"]
+[ext_resource type="Texture2D" uid="uid://gbow77wfi4gu" path="res://art/background.png" id="2_a6uo4"]
+[ext_resource type="Script" path="res://plinko/Ball.gd" id="3_o1j7s"]
+[ext_resource type="Texture2D" uid="uid://dvmg3d63bwrrs" path="res://art/ball.png" id="4_st38e"]
+[ext_resource type="Script" path="res://plinko/peg.gd" id="5_3xg0q"]
+[ext_resource type="Texture2D" uid="uid://ddbbho8f37w81" path="res://art/pin.png" id="6_q70nt"]
+[ext_resource type="Script" path="res://plinko/bucket.gd" id="7_hyxao"]
+[ext_resource type="Texture2D" uid="uid://b55accqbfi5a3" path="res://art/bucket.png" id="8_hiols"]
+[ext_resource type="FontFile" uid="uid://dlkt17p3aqn0n" path="res://art/3XAY-Sans-Regular.ttf" id="9_6yk82"]
+[ext_resource type="Script" path="res://plinko/NextDay.gd" id="10_26cns"]
+[ext_resource type="Texture2D" uid="uid://btrgw1lltabp6" path="res://art/button.png" id="11_u7odc"]
+[ext_resource type="Script" path="res://plinko/Man.gd" id="12_ants4"]
+[ext_resource type="Texture2D" uid="uid://cyjuxg36tkphq" path="res://art/man/dead.png" id="13_n473b"]
+[ext_resource type="Texture2D" uid="uid://jx04j3bhrfdc" path="res://art/man/devil_normal.png" id="14_uaet1"]
+[ext_resource type="Texture2D" uid="uid://bl2dv0l6xch5e" path="res://art/man/devil_talk_closed.png" id="15_y5585"]
+[ext_resource type="Texture2D" uid="uid://ctjr18q46xla8" path="res://art/man/devil_talk_open.png" id="16_7rxeq"]
+[ext_resource type="Texture2D" uid="uid://7t7uyrusept3" path="res://art/man/happy.png" id="17_o8nkx"]
+[ext_resource type="Texture2D" uid="uid://bjd3s820q2d5q" path="res://art/man/miserable.png" id="18_3ie3r"]
+[ext_resource type="Texture2D" uid="uid://btsb05g0ym8m1" path="res://art/man/talk_open.png" id="19_ttuhu"]
+[ext_resource type="Texture2D" uid="uid://bb4ql0ythhcq7" path="res://art/man/question.png" id="20_oattx"]
+[ext_resource type="Texture2D" uid="uid://bjk3tmbq81wvq" path="res://art/man/sad.png" id="21_fhe5v"]
+[ext_resource type="Texture2D" uid="uid://sssv2k7f75po" path="res://art/man/talk_closed.png" id="22_uclqx"]
+[ext_resource type="Texture2D" uid="uid://b46mokl42m4cv" path="res://art/man/think.png" id="23_xrk4t"]
+[ext_resource type="Script" path="res://plinko/bubble.gd" id="24_g42be"]
+[ext_resource type="AudioStream" uid="uid://c7m3dt18if0kt" path="res://music/The Devil Plays Plinko.mp3" id="25_7bppd"]
+[ext_resource type="Texture2D" uid="uid://d2q23uo3vl2lr" path="res://art/soul/soul1.png" id="26_40t7j"]
+[ext_resource type="Texture2D" uid="uid://jf6turmn3icr" path="res://art/soul/soul2.png" id="27_051qe"]
+[ext_resource type="Texture2D" uid="uid://ds7yasr5flsqu" path="res://art/soul/soul3.png" id="28_hrp2m"]
+[ext_resource type="Texture2D" uid="uid://bf1e4jo52mg5k" path="res://art/soul/soul4.png" id="29_4a5n5"]
+[ext_resource type="Script" path="res://plinko/dialouge_manager.gd" id="30_8lwtu"]
+[ext_resource type="Script" path="res://plinko/SFX.gd" id="31_dmffm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwu4b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5qog"]
+radius = 600.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jjg6k"]
+bounce = 0.7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bnxy"]
+radius = 16.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_00t77"]
+bounce = 0.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jaakm"]
+size = Vector2(23.3333, 14.1111)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7wb4y"]
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bqh5k"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_487xg"]
+radius = 120.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtaw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_40t7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_051qe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_hrp2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_4a5n5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oa4ml"]
+bounce = 4.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yuq7t"]
+radius = 825.0
+height = 4100.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fbslg"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxycf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_n473b")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_uaet1")
+}],
+"loop": true,
+"name": &"devil_normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_y5585")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7rxeq")
+}],
+"loop": true,
+"name": &"devil_talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_o8nkx")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_3ie3r")
+}],
+"loop": true,
+"name": &"miserable",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_ttuhu")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_oattx")
+}],
+"loop": true,
+"name": &"question",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_fhe5v")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_uclqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ttuhu")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_xrk4t")
+}],
+"loop": true,
+"name": &"think",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53uos"]
+size = Vector2(367, 50)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yp2ad"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q1cg"]
+size = Vector2(1582.1, 2283.16)
+
+[node name="Plinko" type="Node2D"]
+script = ExtResource("1_ro1am")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(984.888, 561.75)
+scale = Vector2(0.536343, 0.536343)
+texture = ExtResource("2_a6uo4")
+
+[node name="Ball" type="RigidBody2D" parent="."]
+editor_description = "ball"
+position = Vector2(-157, -147)
+mass = 0.077
+physics_material_override = SubResource("PhysicsMaterial_jwu4b")
+gravity_scale = 0.0
+script = ExtResource("3_o1j7s")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(0.165, 0.165)
+texture = ExtResource("4_st38e")
+offset = Vector2(300, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+scale = Vector2(0.02, 0.02)
+shape = SubResource("CircleShape2D_x5qog")
+
+[node name="Peg" type="RigidBody2D" parent="."]
+position = Vector2(-234, -207)
+physics_material_override = SubResource("PhysicsMaterial_jjg6k")
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("5_3xg0q")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Peg"]
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("6_q70nt")
+offset = Vector2(-160, 60)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Peg"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_2bnxy")
+
+[node name="Bucket" type="RigidBody2D" parent="."]
+z_index = 2
+position = Vector2(-224, -123)
+physics_material_override = SubResource("PhysicsMaterial_00t77")
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+script = ExtResource("7_hyxao")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bucket"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-4.76837e-07, -2)
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("8_hiols")
+offset = Vector2(85.88, -76.89)
+
+[node name="Border" type="CollisionPolygon2D" parent="Bucket"]
+scale = Vector2(1.5, 2.25)
+polygon = PackedVector2Array(18, 11, -8, 11, -18, 11, -18, -13.7778, -11.3333, -11.1111, -11.3333, 6.66667, 11.3333, 6.66667, 11.3333, -11.1111, 18, -13.7778)
+
+[node name="Detection" type="Area2D" parent="Bucket"]
+scale = Vector2(1.5, 2.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket/Detection"]
+position = Vector2(0.333344, 0.0555573)
+shape = SubResource("RectangleShape2D_jaakm")
+
+[node name="Absorb" type="RigidBody2D" parent="Bucket"]
+physics_material_override = SubResource("PhysicsMaterial_7wb4y")
+gravity_scale = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket/Absorb"]
+scale = Vector2(1.5, 2.25)
+polygon = PackedVector2Array(-11.3333, -10.2222, -11.3333, 6.22222, 11.3333, 6.22222, 11.3333, -9.77777, 13.3333, -9.77777, 13.3333, 8, -13.3333, 8, -13.3333, -10.2222)
+
+[node name="Label" type="Label" parent="Bucket"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("9_6yk82")
+theme_override_font_sizes/font_size = 32
+text = "x5.25"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Soul" type="RigidBody2D" parent="."]
+position = Vector2(1730, 467)
+physics_material_override = SubResource("PhysicsMaterial_bqh5k")
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soul"]
+shape = SubResource("CircleShape2D_487xg")
+
+[node name="Soul" type="AnimatedSprite2D" parent="Soul"]
+scale = Vector2(0.261, 0.261)
+sprite_frames = SubResource("SpriteFrames_rtaw0")
+frame = 2
+frame_progress = 0.266965
+
+[node name="Money" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 28.0
+offset_right = 453.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("9_6yk82")
+theme_override_font_sizes/font_size = 250
+text = "$5.32"
+
+[node name="BallsCount" type="Label" parent="."]
+offset_left = 1527.0
+offset_top = 175.0
+offset_right = 1878.0
+offset_bottom = 255.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("9_6yk82")
+theme_override_font_sizes/font_size = 85
+text = "Balls: 1 / 1"
+
+[node name="DayCount" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1440.0
+offset_top = 23.0
+offset_right = 1865.0
+offset_bottom = 172.0
+grow_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("9_6yk82")
+theme_override_font_sizes/font_size = 200
+text = "Day 1"
+horizontal_alignment = 2
+
+[node name="BallPreview" type="Sprite2D" parent="."]
+self_modulate = Color(0.521569, 0.521569, 0.521569, 1)
+position = Vector2(-46, -351)
+scale = Vector2(0.165, 0.165)
+texture = ExtResource("4_st38e")
+offset = Vector2(300, 130)
+
+[node name="Label" type="Label" parent="BallPreview"]
+offset_left = 145.455
+offset_top = -412.121
+offset_right = 2327.45
+offset_bottom = 394.879
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("9_6yk82")
+theme_override_font_sizes/font_size = 400
+text = "Click to Drop!"
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NextDay" type="RigidBody2D" parent="."]
+position = Vector2(1683, 963)
+physics_material_override = SubResource("PhysicsMaterial_oa4ml")
+freeze = true
+script = ExtResource("10_26cns")
+
+[node name="NextDay" type="TextureButton" parent="NextDay"]
+offset_left = -189.0
+offset_top = -106.0
+offset_right = 3651.0
+offset_bottom = 2054.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("11_u7odc")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="NextDay/NextDay"]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 750.0
+offset_right = 3226.0
+offset_bottom = 1450.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 80
+theme_override_fonts/font = ExtResource("9_6yk82")
+theme_override_font_sizes/font_size = 800
+text = "Next Day"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextDay"]
+rotation = 1.5708
+scale = Vector2(0.08, 0.08)
+shape = SubResource("CapsuleShape2D_yuq7t")
+
+[node name="Guidance" type="Label" parent="NextDay"]
+offset_left = -378.0
+offset_top = -305.0
+offset_right = 170.0
+offset_bottom = -62.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("9_6yk82")
+theme_override_font_sizes/font_size = 100
+text = "Click Next Day to get More Balls!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Man" type="RigidBody2D" parent="."]
+position = Vector2(98, 365)
+physics_material_override = SubResource("PhysicsMaterial_fbslg")
+freeze = true
+script = ExtResource("12_ants4")
+metadata/_edit_group_ = true
+
+[node name="Man" type="AnimatedSprite2D" parent="Man"]
+position = Vector2(115, 548)
+scale = Vector2(0.312, 0.312)
+sprite_frames = SubResource("SpriteFrames_xxycf")
+animation = &"open"
+autoplay = "think"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Man"]
+position = Vector2(-44, -231)
+scale = Vector2(1.415, 1.415)
+polygon = PackedVector2Array(23, 600, 22, 626, 233, 626, 221, 588, 174, 527, 128, 512, 89, 518, 43, 554)
+
+[node name="HeadDropTimer" type="Timer" parent="Man"]
+one_shot = true
+
+[node name="HeadDropCheck" type="Area2D" parent="."]
+position = Vector2(98, 365)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadDropCheck"]
+position = Vector2(121.5, -87)
+shape = SubResource("RectangleShape2D_53uos")
+
+[node name="Bubble" type="Sprite2D" parent="."]
+z_index = 8
+position = Vector2(291, 589)
+scale = Vector2(0.211111, 0.211111)
+script = ExtResource("24_g42be")
+metadata/_edit_group_ = true
+
+[node name="Speech" type="TextEdit" parent="Bubble"]
+anchors_preset = -1
+anchor_left = -1043.85
+anchor_top = -486.796
+offset_left = -93.15
+offset_top = -920.204
+offset_right = 450.0
+offset_bottom = 876.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("9_6yk82")
+theme_override_font_sizes/font_size = 250
+text = "You've lived a bad life, and now you're in the afterlife. You want a second chance, so you made a deal with the devil. You need to get 10 million dollars. You can get it by working for hundreds of years, or you could gamble it all for a chance to win BIG. Luckily, you have $5.32 from your wallet when you died. That's more than enough to gamble! And besides, most gamblers quit before they win big, so naturally, you won't quit, right? But be careful when you're gambling! If you lose too much, you'll be the devil's indentured servant...
+"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="Dialogue" type="AudioStreamPlayer2D" parent="Bubble"]
+position = Vector2(-3249.47, -1245.79)
+scale = Vector2(4.73684, 4.73684)
+volume_db = 10.0
+panning_strength = 0.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Bubble"]
+position = Vector2(-3249.47, -1245.79)
+scale = Vector2(4.73684, 4.73684)
+stream = ExtResource("25_7bppd")
+volume_db = -10.511
+panning_strength = 0.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Bubble"]
+physics_material_override = SubResource("PhysicsMaterial_yp2ad")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble/RigidBody2D"]
+position = Vector2(-350.525, -265.264)
+shape = SubResource("RectangleShape2D_5q1cg")
+
+[node name="DialogueManager" type="Node" parent="."]
+script = ExtResource("30_8lwtu")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+script = ExtResource("31_dmffm")
+
+[node name="Debug" type="Label" parent="."]
+visible = false
+offset_left = 237.0
+offset_right = 991.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 100
+text = "DEBUG MODE"
+
+[connection signal="body_shape_entered" from="Bucket" to="Bucket" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="Bucket/Detection" to="Bucket" method="_on_detection_body_entered"]
+[connection signal="pressed" from="NextDay/NextDay" to="." method="_on_next_day_pressed"]
+[connection signal="body_entered" from="HeadDropCheck" to="Man" method="_on_head_drop_check_body_entered"]
+[connection signal="body_exited" from="HeadDropCheck" to="Man" method="_on_head_drop_check_body_exited"]
+[connection signal="finished" from="Bubble/Dialogue" to="Bubble" method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Bubble/Music" to="." method="_on_music_finished"]

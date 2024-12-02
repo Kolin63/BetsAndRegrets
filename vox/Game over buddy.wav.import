@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2ayusj58vtk1"
+path="res://.godot/imported/Game over buddy.wav-063a68b4de2485a9ff103d76aef8ba79.sample"
+
+[deps]
+
+source_file="res://vox/Game over buddy.wav"
+dest_files=["res://.godot/imported/Game over buddy.wav-063a68b4de2485a9ff103d76aef8ba79.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6wnhbdwcknma"
+path="res://.godot/imported/I won.wav-c647bcb09ce8c472b80a6e34b0f51566.sample"
+
+[deps]
+
+source_file="res://vox/I won.wav"
+dest_files=["res://.godot/imported/I won.wav-c647bcb09ce8c472b80a6e34b0f51566.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
