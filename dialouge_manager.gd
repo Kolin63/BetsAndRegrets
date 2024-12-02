@@ -21,7 +21,7 @@ func set_man(animation):
 
 
 func set_volume(db):
-	Bubble.Dialogue.volume_db = db
+	Bubble.Dialogue.volume_db = db + 20
 
 
 func set_music_volume(db):

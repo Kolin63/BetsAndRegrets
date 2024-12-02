@@ -469,6 +469,7 @@ wrap_mode = 1
 [node name="Dialogue" type="AudioStreamPlayer2D" parent="Bubble"]
 position = Vector2(-3249.47, -1245.79)
 scale = Vector2(4.73684, 4.73684)
+volume_db = 10.0
 panning_strength = 0.0
 
 [node name="Music" type="AudioStreamPlayer2D" parent="Bubble"]

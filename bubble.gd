@@ -27,6 +27,11 @@ func say(text, audio, i, music = $Music.stream):
 	$Dialogue.stream = audio
 	$Dialogue.play()
 	
+	if (music == load("res://music/Dnd is satanic.mp3")):
+		$Music.volume_db = 0
+	else:
+		$Music.volume_db = 0
+	
 	if (music == null):
 		$Music.stream_paused = true
 	elif (music == $Music.stream && $Music.playing):
