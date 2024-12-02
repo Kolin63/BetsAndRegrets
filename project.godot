@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="BetsAndRegrets"
+config/description="95% of gamblers quit before they win big!"
+config/version="v2.0.0"
 run/main_scene="res://transition_scenes/start.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [display]
 
