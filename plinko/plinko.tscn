@@ -441,7 +441,7 @@ one_shot = true
 position = Vector2(98, 365)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeadDropCheck"]
-position = Vector2(121.5, -87)
+position = Vector2(119, -39)
 shape = SubResource("RectangleShape2D_53uos")
 
 [node name="Bubble" type="Sprite2D" parent="."]
