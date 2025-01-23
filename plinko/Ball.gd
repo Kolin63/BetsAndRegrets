@@ -34,8 +34,24 @@ func _process(delta):
 		editor_description = "ball"
 	
 	
+	bounce_detect()
+	
+	
 	if (get_parent().DEBUG_MODE):
 		if (editor_description == "ball"):
 			modulate = Color(1, 1, 1)
 		else:
 			modulate = Color(1, 0, 0)
+
+
+var previous_linear_velocity = null
+
+func bounce_detect():
+	if (previous_linear_velocity != null):
+		if (abs(linear_velocity[0] - previous_linear_velocity[0]) > 100 
+		or abs(linear_velocity[1] - previous_linear_velocity[1]) > 100
+		and position.y < 1000):
+			$AudioStreamPlayer2D.pitch_scale = randf_range(0.75, 1.25)
+			$AudioStreamPlayer2D.play()
+	
+	previous_linear_velocity = linear_velocity

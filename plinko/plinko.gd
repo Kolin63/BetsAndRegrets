@@ -69,7 +69,6 @@ func _process(_delta: float) -> void:
 
 func _on_next_day_pressed() -> void:
 	new_day()
-	$SFX.playsound(load("res://sfx/Next Day.wav"))
 
 
 func new_day():
