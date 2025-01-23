@@ -11,24 +11,25 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	$CollisionPolygon2D.disabled = !visible
 	
 	if (balls_inside_checker):
 		$HeadDropTimer.start()
 	
-	slide_animation()
+	slide_animation(delta)
 
 
-func slide_animation():
+func slide_animation(delta):
+	const speed = 800
 	if ($HeadDropTimer.time_left > 0):
 		if (position.x >= slide_pos.x):
-			position.x -= 10
+			position.x -= speed * delta
 		if ($Man.animation == "think"):
 			$Man.animation = "open"
 	else:
 		if (position.x <= default_pos.x):
-			position.x += 10
+			position.x += speed * delta
 		if ($Man.animation == "open"):
 			$Man.animation = "think"
 	
