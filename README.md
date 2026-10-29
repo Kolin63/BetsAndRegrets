@@ -41,7 +41,7 @@ He also edited the voiceovers to make them sound better. He is a fullstack devel
 with the Bootstrap framework. Additionally, creates music and art for fun. Ayan D. enjoys making Youtube videos as well, so be sure to
 check out his [channel](https://www.youtube.com/@master-tech-videos).
 
-#### Hayden Lee - The Artist ([@Dadafruta](https://github.com/dadafruta)) 🖌️
+#### Hayden Lee - The Artist 🖌️
 Hayden was the artist in this group. He hand-drew every single visual element (other than the font) to make it perfectly
 align with our vision for the game, and to help the story come to life. He was also the main voice actor, for both the intro
 and the main character. He is a 16 year old programmer who mainly uses Python, and also uses some Javascript.
